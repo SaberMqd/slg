@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <content  CellID="1001" CellName="草地" CellSize="1#1
+2#1" PassEfficiency="100" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="5" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="-1" MaxCent="-1" MinDistance="0" SameDistance="0" />
+    <content  CellID="1002" CellName="道路" CellSize="1#1
+2#1" PassEfficiency="100" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="0" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="5" MaxCent="10" MinDistance="0" SameDistance="0" />
+    <content  CellID="1003" CellName="树林" CellSize="1#1
+2#1" PassEfficiency="70" AtkAdd="0" DefAdd="1" HitAdd="-5" EvAdd="10" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="3" MaxCent="5" MinDistance="0" SameDistance="0" />
+    <content  CellID="1004" CellName="墙壁" CellSize="1#1
+2#1" PassEfficiency="0" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="0" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="5" MaxCent="8" MinDistance="0" SameDistance="0" />
+    <content  CellID="1005" CellName="楼梯" CellSize="1#1
+2#1" PassEfficiency="100" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="10" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="1" MaxCent="2" MinDistance="0" SameDistance="0" />
+    <content  CellID="1006" CellName="石柱" CellSize="1#1
+2#1" PassEfficiency="70" AtkAdd="0" DefAdd="1" HitAdd="0" EvAdd="10" HPRecovery="0" AtkTime="0" MotherCell="1008" MinCent="0.5" MaxCent="1" MinDistance="0" SameDistance="3" />
+    <content  CellID="1007" CellName="断墙" CellSize="1#1
+2#1" PassEfficiency="0" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="0" HPRecovery="0" AtkTime="3" MotherCell="1004" MinCent="0" MaxCent="0.3" MinDistance="0" SameDistance="0" />
+    <content  CellID="1008" CellName="地砖" CellSize="1#1
+2#1" PassEfficiency="100" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="0" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="3" MaxCent="5" MinDistance="0" SameDistance="0" />
+    <content  CellID="1009" CellName="村庄" CellSize="1#1
+2#1" PassEfficiency="80" AtkAdd="0" DefAdd="1" HitAdd="0" EvAdd="10" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="0" MaxCent="1.5" MinDistance="0" SameDistance="3" />
+    <content  CellID="1010" CellName="村口" CellSize="1#1
+2#1" PassEfficiency="80" AtkAdd="0" DefAdd="1" HitAdd="0" EvAdd="10" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="0" MaxCent="0.3" MinDistance="0" SameDistance="0" />
+    <content  CellID="1011" CellName="堡垒" CellSize="1#1
+2#1" PassEfficiency="80" AtkAdd="3" DefAdd="2" HitAdd="0" EvAdd="20" HPRecovery="20" AtkTime="0" MotherCell="0" MinCent="0" MaxCent="0.3" MinDistance="8" SameDistance="8" />
+    <content  CellID="1012" CellName="水面" CellSize="1#1
+2#1" PassEfficiency="0" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="0" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="0" MaxCent="5" MinDistance="0" SameDistance="0" />
+    <content  CellID="1013" CellName="桥梁" CellSize="1#1
+2#1" PassEfficiency="100" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="0" HPRecovery="0" AtkTime="0" MotherCell="1012" MinCent="0.5" MaxCent="1" MinDistance="0" SameDistance="0" />
+    <content  CellID="1014" CellName="城堡" CellSize="1#1
+2#1" PassEfficiency="0" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="0" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="0" MaxCent="1" MinDistance="12" SameDistance="0" />
+    <content  CellID="1015" CellName="城门" CellSize="1#1
+2#1" PassEfficiency="100" AtkAdd="5" DefAdd="3" HitAdd="0" EvAdd="30" HPRecovery="30" AtkTime="0" MotherCell="1014" MinCent="0.1" MaxCent="0.1" MinDistance="12" SameDistance="15" />
+    <content  CellID="1016" CellName="山地" CellSize="1#1
+2#1" PassEfficiency="10" AtkAdd="0" DefAdd="2" HitAdd="0" EvAdd="20" HPRecovery="0" AtkTime="0" MotherCell="0" MinCent="0" MaxCent="5" MinDistance="0" SameDistance="0" />
+    <content  CellID="1017" CellName="宝箱" CellSize="1#1
+2#1" PassEfficiency="0" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="0" HPRecovery="0" AtkTime="0" MotherCell="1008" MinCent="0.1" MaxCent="0.4" MinDistance="0" SameDistance="10" />
+    <content  CellID="1018" CellName="地刺" CellSize="1#1
+2#1" PassEfficiency="50" AtkAdd="0" DefAdd="0" HitAdd="0" EvAdd="-20" HPRecovery="-10" AtkTime="0" MotherCell="1008" MinCent="0" MaxCent="1" MinDistance="8" SameDistance="0" />
+</root>
