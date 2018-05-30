@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace map.creater
+namespace xml.data
 {
-    [Serializable]
-    public class CrustalBlockCollection
-    {
-        //[XmlArray("Items"), XmlArrayItem("CrustalBlock")]
-        [XmlArray("Items")]
-        public Cell[] Items { get; set; }
+
+    [XmlRoot("Root")]
+    public class ItemCollection<T> {
+        [XmlArray("Items"), XmlArrayItem("Item")]
+        public T[] Items { get; set; }
     }
 
     [Serializable]
@@ -18,30 +17,31 @@ namespace map.creater
         public string Name { set; get; }
         public int Height { set; get; }
         public int Width { set; get; }
-        public int PassEfficiency { set; get; }
+        public float PassEfficiency { set; get; }
+        
         public int AtkAdd { set; get; }
         public int DefAdd { set; get; }
+        public int HitAdd { set; get; }
         public int EvAdd { set; get; }
-        public int HPRecovery { set; get; }
+        public float HPRecovery { set; get; }
         public int AtkTime { set; get; }
         public int MotherCell { set; get; }
-        public int MinCent { set; get; }
-        public int MaxCent { set; get; }
+        public float MinCent { set; get; }
+        public float MaxCent { set; get; }
         public int MinDistance { set; get; }
         public int SameDistance { set; get; }
+        public string Resourse { set; get; }
+        
     }
 
     [Serializable]
-    public class MapCell
-    {
-        public int X { set; get; }
-        public int Y { set; get; }
-        public int ID { set; get; }
-
-    }
-
     public class Terrain
     {
-       
+        public int CellID { set; get; }
+
+        public int X { set; get; }
+
+        public int Y { set; get; }
+
     }
 }
