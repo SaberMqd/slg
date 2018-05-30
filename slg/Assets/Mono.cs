@@ -8,7 +8,7 @@ public class Mono : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        var e = gameObject.GetEntity();
+        //var e = gameObject.GetEntity();
 
 	}
 	
