@@ -32,6 +32,7 @@ public class Main : MonoBehaviour {
         Dictionary<int, Cell> cellMap = new Dictionary<int, Cell>();
         foreach (var cell in cells.Items)
         {
+			UnityEngine.Debug.Log(cell.ID + " " + cell.Name);
             cellMap.Add(cell.ID, cell);
         }
 
@@ -43,7 +44,6 @@ public class Main : MonoBehaviour {
             GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>("ppp"));
             terr_go.transform.position.Set(terr.X, terr.Y, 0);
             terr_go.transform.localScale.Set(1000, 1000, 1);
-            Debug.Log("INIT PPPS");
         }
         
     }
