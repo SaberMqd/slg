@@ -32,21 +32,22 @@ public class Main : MonoBehaviour {
         Dictionary<int, Cell> cellMap = new Dictionary<int, Cell>();
         foreach (var cell in cells.Items)
         {
-			UnityEngine.Debug.Log(cell.ID + " " + cell.Name);
             cellMap.Add(cell.ID, cell);
         }
 
-        var terrains = XmlParaser<ItemCollection<xml.data.Terrain>>.Paraser(Application.dataPath + "/DemoMap.xml");
+		int xscale = 1000;
+		int yscale = 1000;
+
+		var terrains = XmlParaser<ItemCollection<xml.data.Terrain>>.Paraser(Application.dataPath + "/DemoMap.xml");
         foreach (var terr in terrains.Items)
         {
             var cellinfo = cellMap[terr.CellID];
-            //GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>(cellinfo.Resourse));
-            GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>("ppp"));
-            terr_go.transform.position.Set(terr.X, terr.Y, 0);
-            terr_go.transform.localScale.Set(1000, 1000, 1);
-        }
-        
-    }
+            GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>(cellinfo.Resourse));
+			terr_go.transform.position = new Vector3(terr.X, 0, terr.Y);	
+			terr_go.transform.localScale.Set(1, 1, 1);
+		}
+
+	}
 
     // Update is called once per frame
     void Update () {
