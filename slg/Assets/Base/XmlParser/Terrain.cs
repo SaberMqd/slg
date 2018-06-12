@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace xml.data
+namespace XML.Data
 {
 
     [XmlRoot("Root")]

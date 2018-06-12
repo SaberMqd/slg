@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml.Serialization;
 
-namespace xml.paraser
+namespace XML.Paraser
 {
     public class XmlParaser<T> 
     {

@@ -1,5 +1,0 @@
-This is the sample level from the web player demo. It is supplied as an example of how a level can be built using the 2D Pixel Tileset. Although I have tried to keep all the layers organized, some tiles' sorting layers might be offset from where they should be. This is most often to make upper end ground tiles render above shadow tiles and the like.
-This is just a sample approach to building levels with the tileset. I highly encourage you to experiment and try out your own ideas, to find an approach that best suits you!
-
-For questions: marcus@perdiv.com
-Or Twitter: https://twitter.com/caffeinegamer
