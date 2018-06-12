@@ -1,11 +1,10 @@
 ﻿using Unity.Entities;
 
-public class MenueCreateSystem : ComponentSystem
+public class MenueInputSystem : ComponentSystem
 {
 
     protected override void OnUpdate()
     {
 
     }
-
 }

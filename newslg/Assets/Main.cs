@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using Unity.Entities;
+using XML.Paraser;
+using XML.Data;
 
 public class Main : MonoBehaviour
 {
     EntityManager entityManager;
+
     void Start()
     {
         // 获取EntityManager
@@ -12,6 +16,23 @@ public class Main : MonoBehaviour
         // 定义实体的原型
         //var sampleArchetype = entityManager.CreateArchetype(typeof(CountData),typeof(CountData1));
         //entityManager.CreateEntity(sampleArchetype);
+
+        var cells = XmlParaser<ItemCollection<XML.Data.Cell>>.Paraser(Application.dataPath + "/cellAtt.xml");
+        Dictionary<int, Cell> cellMap = new Dictionary<int, Cell>();
+        foreach (var cell in cells.Items)
+        {
+            cellMap.Add(cell.ID, cell);
+        }
+
+        var terrains = XmlParaser<ItemCollection<XML.Data.Terrain>>.Paraser(Application.dataPath + "/DemoMap.xml");
+        foreach (var terr in terrains.Items)
+        {
+            var cellinfo = cellMap[terr.CellID];
+            GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>(cellinfo.Resourse));
+            terr_go.transform.position = new Vector3(terr.X, 0, terr.Y);
+            terr_go.transform.localScale.Set(1, 1, 1);
+        }
+
     }
 
     private void Update()
