@@ -17,19 +17,19 @@ public class Main : MonoBehaviour
         //var sampleArchetype = entityManager.CreateArchetype(typeof(CountData),typeof(CountData1));
         //entityManager.CreateEntity(sampleArchetype);
 
-        var cells = XmlParaser<ItemCollection<XML.Data.Cell>>.Paraser(Application.dataPath + "/cellAtt.xml");
+        var cells = XmlParaser<ItemCollection<XML.Data.Cell>>.Paraser(Application.dataPath + "/Config/cellAtt.xml");
         Dictionary<int, Cell> cellMap = new Dictionary<int, Cell>();
         foreach (var cell in cells.Items)
         {
             cellMap.Add(cell.ID, cell);
         }
 
-        var terrains = XmlParaser<ItemCollection<XML.Data.Terrain>>.Paraser(Application.dataPath + "/DemoMap.xml");
+        var terrains = XmlParaser<ItemCollection<XML.Data.Terrain>>.Paraser(Application.dataPath + "/Config/DemoMap.xml");
         foreach (var terr in terrains.Items)
         {
             var cellinfo = cellMap[terr.CellID];
             GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>(cellinfo.Resourse));
-            terr_go.transform.position = new Vector3(terr.X, 0, terr.Y);
+            terr_go.transform.position = new Vector3(terr.X, terr.Y, 0);
             terr_go.transform.localScale.Set(1, 1, 1);
         }
 
