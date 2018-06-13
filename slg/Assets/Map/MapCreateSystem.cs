@@ -33,7 +33,7 @@ public class MapCreateSystem : ComponentSystem
                     var cellinfo = cellMap[terr.CellID];
                     GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>(cellinfo.Resourse));
                     terr_go.name = "mapcell"+ cellNameIndex++;
-                    terr_go.transform.position = new Vector3(terr.X, terr.Y, 0);
+                    terr_go.transform.position = new Vector3(terr.X, 0, terr.Y);
                     terr_go.transform.localScale.Set(1, 1, 1);
                 }
                 PostUpdateCommands.DestroyEntity(group.entity[i]);
