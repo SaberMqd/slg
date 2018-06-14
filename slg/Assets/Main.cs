@@ -8,21 +8,13 @@ public class Main : MonoBehaviour
 
     void Start()
     {
-        // 获取EntityManager
         entityManager = World.Active.GetOrCreateManager<EntityManager>();
-
-        //创建地图实体
         var mapEntity = entityManager.CreateEntity(typeof(MapType));
         entityManager.SetComponentData<MapType>(mapEntity, new MapType { Type = 1 });
+        entityManager.CreateEntity(typeof(CreateCharaterData));
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp("a"))
-        {
-            var e = entityManager.CreateEntity(typeof(MapDeleteType));
-            entityManager.SetComponentData<MapDeleteType>(e, new MapDeleteType { Type = 1 });
-
-        }
     }
 }

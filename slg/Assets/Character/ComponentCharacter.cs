@@ -28,3 +28,5 @@ public struct CharacterCoordinate : IComponentData {
     public int Y;
     public int Z;
 }
+
+public struct CreateCharaterData : IComponentData { }
