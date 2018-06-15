@@ -30,3 +30,5 @@ public struct CharacterCoordinate : IComponentData {
 }
 
 public struct CreateCharaterData : IComponentData { }
+
+public struct PreActionData : IComponentData { }

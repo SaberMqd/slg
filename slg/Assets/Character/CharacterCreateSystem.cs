@@ -1,4 +1,5 @@
 ﻿using Unity.Entities;
+using UnityEngine;
 
 [UpdateAfter(typeof(MapCreateSystem))]
 public class CharacterCreateSystem : ComponentSystem
@@ -10,15 +11,18 @@ public class CharacterCreateSystem : ComponentSystem
         public ComponentDataArray<CreateCharaterData> data;
     }
 
+    EntityManager entityManager = World.Active.GetOrCreateManager<EntityManager>();
+
     [Inject] Group group;
+
     protected override void OnUpdate()
     {
         for (int i = 0; i < group.Length; i++)
         {
-            //创建角色
-            UnityEngine.Debug.Log("创建角色了");
-            PostUpdateCommands.DestroyEntity(group.entity[i]);
-            break;
+            GameObject gameObject = GameObject.Instantiate(Resources.Load<GameObject>("character_1001"));
+            var coordinate = entityManager.GetComponentData<CharacterCoordinate>(group.entity[i]);
+            gameObject.transform.position = new Vector3(coordinate.X, coordinate.Z, coordinate.Y);
+            PostUpdateCommands.RemoveComponent<CreateCharaterData>(group.entity[i]);
         }
     }
 }
