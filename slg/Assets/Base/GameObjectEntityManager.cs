@@ -6,12 +6,13 @@ using Unity.Entities;
 public class GameObjectEntityManager {
 
     private static GameObjectEntityManager Instance = null;
-
+    private Entity entity;
+    private bool current = false;
     private GameObjectEntityManager() {
 
     }
 
-   static public GameObjectEntityManager GetInstance() {
+    static public GameObjectEntityManager GetInstance() {
         if (Instance == null) {
             Instance = new GameObjectEntityManager();
         }
@@ -39,5 +40,10 @@ public class GameObjectEntityManager {
         }
         ge = new GE {};
         return false;
+    }
+
+    public Entity GetCurrentEntity(out bool isExist) {
+        isExist = current;
+        return entity;
     }
 }
