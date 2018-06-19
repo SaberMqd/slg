@@ -5,9 +5,9 @@ public struct CreateMoveRangeData : IComponentData { }
 public struct DestroyMoveRangeData : IComponentData { }
 
 public struct MovePosition : IComponentData {
-    public int X;
-    public int Y;
-    public int Z;
+    public float X;
+    public float Y;
+    public float Z;
 }
 
 

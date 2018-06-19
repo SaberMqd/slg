@@ -1,6 +1,7 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
+[UpdateAfter(typeof(CharacterMoveSystem))]
 public class MoveRangeCanvasDestorySystem : ComponentSystem
 {
 
@@ -17,12 +18,7 @@ public class MoveRangeCanvasDestorySystem : ComponentSystem
     {
         for (int i = 0; i < group.Length; i++)
         {
-            var g = GameObject.Find("moverange");
-            if (g) {
-                GameObject.Destroy(g);
-            }
-
-            PostUpdateCommands.RemoveComponent<CreateMoveRangeData>(group.entity[i]);
+            MoveRangeManager.GetInstance().DestroyMoveRange();
             PostUpdateCommands.RemoveComponent<DestroyMoveRangeData>(group.entity[i]);
         }
 

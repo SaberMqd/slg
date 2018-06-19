@@ -7,6 +7,8 @@ public class GameObjectEntityManager {
 
     private static GameObjectEntityManager Instance = null;
     private Entity entity;
+    private GameObject gameObject;
+
     private bool current = false;
     private GameObjectEntityManager() {
 
@@ -47,8 +49,19 @@ public class GameObjectEntityManager {
         return entity;
     }
 
+    public GameObject GetCurrentGameObject(out bool isExist)
+    {
+        isExist = current;
+        return gameObject;
+    }
+
     public void SetCurrentEntity(Entity e) {
         entity = e;
+        current = true;
+    }
+
+    public void SetCurrentGameObject(GameObject g) {
+        gameObject = g;
         current = true;
     }
 }

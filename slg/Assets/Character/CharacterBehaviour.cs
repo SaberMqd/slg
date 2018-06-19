@@ -58,6 +58,7 @@ public class CharacterBehaviour : MonoBehaviour {
         entityManager.SetComponentData(entity, pos);
 
         GameObjectEntityManager.GetInstance().SetAddGameObjectAndEntity(out id, gameObject , entity);
+        gameObject.name = "character_1001";
 	}
 
     public void PreAction() {
@@ -67,6 +68,7 @@ public class CharacterBehaviour : MonoBehaviour {
             return;
         }
         gm.SetCurrentEntity(entity);
+        gm.SetCurrentGameObject(gameObject);
         em.AddComponent(entity, typeof(PreActionData));
     }
 }
