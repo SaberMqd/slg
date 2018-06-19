@@ -8,6 +8,7 @@ public class Main : MonoBehaviour
 
     void Start()
     {
+        return;
         entityManager = World.Active.GetOrCreateManager<EntityManager>();
         var mapEntity = entityManager.CreateEntity(typeof(MapType));
         entityManager.SetComponentData<MapType>(mapEntity, new MapType { Type = 1 });

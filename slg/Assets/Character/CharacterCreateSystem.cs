@@ -9,6 +9,7 @@ public class CharacterCreateSystem : ComponentSystem
         public int Length;
         public EntityArray entity;
         public ComponentDataArray<CreateCharaterData> data;
+
     }
 
     EntityManager entityManager = World.Active.GetOrCreateManager<EntityManager>();
