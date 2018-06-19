@@ -20,6 +20,5 @@ public class AttackRangeCanvasDestroySystem : ComponentSystem
             AttackRangeManager.GetInstance().DestroyAttackRange();
             PostUpdateCommands.RemoveComponent<DestroyAttackRange>(group.entity[i]);
         }
-
     }
 }

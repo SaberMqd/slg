@@ -21,7 +21,6 @@ public class Main : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                //如果是其他的东东，则干掉之前的。
                 if (hit.collider.gameObject.name == "character_1001")
                 {
                     var ch = hit.collider.gameObject.GetComponentInParent<CharacterBehaviour>();
@@ -38,6 +37,8 @@ public class Main : MonoBehaviour
                     ch.AttackTo();
                 }
             }
+            //右键撤销。 以及点击无用的区域也要撤销。
+
         }
     }
 
