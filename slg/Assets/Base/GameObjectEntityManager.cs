@@ -46,4 +46,9 @@ public class GameObjectEntityManager {
         isExist = current;
         return entity;
     }
+
+    public void SetCurrentEntity(Entity e) {
+        entity = e;
+        current = true;
+    }
 }

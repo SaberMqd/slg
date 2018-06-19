@@ -38,10 +38,11 @@ public class Main : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.gameObject.name == "character")
+                //如果是其他的东东，则干掉之前的。
+                if (hit.collider.gameObject.name == "character_1001")
                 {
                     var ch = hit.collider.gameObject.GetComponentInParent<CharacterBehaviour>();
-                    ch.Click();
+                    ch.PreAction();
                 }
             }
         }

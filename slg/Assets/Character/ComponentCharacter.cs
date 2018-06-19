@@ -25,9 +25,9 @@ public struct CombatAttributes : IComponentData
 }
 
 public struct CharacterCoordinate : IComponentData {
-    public int X;
-    public int Y;
-    public int Z;
+    public float X;
+    public float Y;
+    public float Z;
 }
 
 public struct CreateCharaterData : IComponentData { }

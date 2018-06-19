@@ -23,6 +23,9 @@ public class MenueInput : MonoBehaviour {
         var entity =  GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
         if (isExist)
         {
+            if (entityManager.HasComponent(entity, typeof(PreMoveData))) {
+                return;
+            }
             entityManager.AddComponentData(entity, new PreMoveData { });
         }
     }
@@ -34,6 +37,10 @@ public class MenueInput : MonoBehaviour {
         var entity = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
         if (isExist)
         {
+            if (entityManager.HasComponent(entity, typeof(PreAttackData)))
+            {
+                return;
+            }
             entityManager.AddComponentData(entity, new PreAttackData { });
         }
     }
@@ -45,6 +52,10 @@ public class MenueInput : MonoBehaviour {
         var entity = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
         if (isExist)
         {
+            if (entityManager.HasComponent(entity, typeof(PreSkillData)))
+            {
+                return;
+            }
             entityManager.AddComponentData(entity, new PreSkillData { });
         }
     }
