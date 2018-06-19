@@ -32,7 +32,7 @@ public class Main : MonoBehaviour
                     var ch = hit.collider.gameObject.GetComponent<MoveCellBehaviour>();
                     ch.MoveTo();
                 }
-                if (hit.collider.gameObject.name == "range_attack")
+                if (hit.collider.gameObject.name == "attack_cell")
                 {
                     var ch = hit.collider.gameObject.GetComponent<AttackCellBehaviour>();
                     ch.AttackTo();

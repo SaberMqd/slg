@@ -28,23 +28,23 @@ public class AttackRangeManager {
 
     public void CreateAttackRange(int x, int y, int z, int passValue)
     {
-        GameObject move_cell = GameObject.Instantiate(Resources.Load<GameObject>("range_cell"));
+        GameObject move_cell = GameObject.Instantiate(Resources.Load<GameObject>("attack_cell"));
         move_cell.transform.position = new Vector3(x, y + 0.1f, z + 1);
-        move_cell.name = "range_cell";
+        move_cell.name = "attack_cell";
         range_cells.Add(move_cell);
-        GameObject move_cell1 = GameObject.Instantiate(Resources.Load<GameObject>("range_cell"));
+        GameObject move_cell1 = GameObject.Instantiate(Resources.Load<GameObject>("attack_cell"));
         move_cell1.transform.position = new Vector3(x, y + 0.1f, z - 1);
-        move_cell1.name = "range_cell";
+        move_cell1.name = "attack_cell";
         range_cells.Add(move_cell1);
 
-        GameObject move_cell2 = GameObject.Instantiate(Resources.Load<GameObject>("range_cell"));
+        GameObject move_cell2 = GameObject.Instantiate(Resources.Load<GameObject>("attack_cell"));
         move_cell2.transform.position = new Vector3(x - 1, y + 0.1f, z);
-        move_cell2.name = "range_cell";
+        move_cell2.name = "attack_cell";
         range_cells.Add(move_cell2);
 
-        GameObject move_cell3 = GameObject.Instantiate(Resources.Load<GameObject>("range_cell"));
+        GameObject move_cell3 = GameObject.Instantiate(Resources.Load<GameObject>("attack_cell"));
         move_cell3.transform.position = new Vector3(x + 1, y + 0.1f, z);
-        move_cell3.name = "range_cell";
+        move_cell3.name = "attack_cell";
         range_cells.Add(move_cell3);
 
     }

@@ -9,3 +9,5 @@ public struct AttackPhysics : IComponentData
 {
     public bool PhysicsAbility;
 }
+
+public struct DestroyAttackRange : IComponentData{}
