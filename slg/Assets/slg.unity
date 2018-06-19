@@ -482,6 +482,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1266408226
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1200864049210690, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_Name
+      value: character_1001 (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1282485925
 Prefab:
   m_ObjectHideFlags: 0
@@ -523,6 +569,48 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03ac9cae60a9b8347ab339cdd4f47d68, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1629848965
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4414612875973576, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fa8c847dba24ef34ebfdae726f77a126, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1962997310
 GameObject:
