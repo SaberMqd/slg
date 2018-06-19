@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 public class CharacterBehaviour : MonoBehaviour {
 
@@ -55,4 +56,9 @@ public class CharacterBehaviour : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void Click() {
+        Debug.Log("Create Character ClickClickClickClick " + id);
+
+    }
 }
