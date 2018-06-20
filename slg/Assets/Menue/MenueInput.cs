@@ -7,6 +7,8 @@ public class MenueInput : MonoBehaviour {
     private GameObject buttonMoveObj;
     private GameObject buttonAttackObj;
     private GameObject buttonSkillObj;
+    private GameObject buttonOverObj;
+
 
     private void Start() {
         buttonMoveObj = GameObject.Find("ButtonMove");
@@ -15,9 +17,13 @@ public class MenueInput : MonoBehaviour {
         buttonAttackObj.GetComponent<Button>().onClick.AddListener(AddPreAttackComponent);
         buttonSkillObj = GameObject.Find("ButtonSkill");
         buttonSkillObj.GetComponent<Button>().onClick.AddListener(AddPreSkillComponent);
+
+        buttonOverObj = GameObject.Find("ButtonOver");
+        buttonOverObj.GetComponent<Button>().onClick.AddListener(AddPreOverComponent);
     }
 
     public void AddPreMoveComponent() {
+
         var entityManager = World.Active.GetOrCreateManager<EntityManager>();
         bool isExist = false;
         var entity =  GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
@@ -59,5 +65,12 @@ public class MenueInput : MonoBehaviour {
             entityManager.AddComponentData(entity, new PreSkillData { });
         }
     }
+
+    public void AddPreOverComponent()
+    {
+        var entityManager = World.Active.GetOrCreateManager<EntityManager>();
+        entityManager.CreateEntity(typeof(RoundOverData));
+    }
+
 
 }

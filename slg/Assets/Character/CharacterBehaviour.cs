@@ -26,10 +26,10 @@ public class CharacterBehaviour : MonoBehaviour {
     public int Dodge = 1;
 
     public bool useDefault = true;
+    public bool isEnemy = false;
 
     Entity entity;
 
-    // Use this for initialization
     void Start () {
         var entityManager = World.Active.GetOrCreateManager<EntityManager>();
         var archetype = entityManager.CreateArchetype(
@@ -41,6 +41,9 @@ public class CharacterBehaviour : MonoBehaviour {
         CombatAttributes combatAttributes;
         CharacterCoordinate pos = new CharacterCoordinate();
         entity = entityManager.CreateEntity(archetype);
+        if (isEnemy) {
+            entityManager.AddComponent(entity, typeof(IsEnemyData));
+        }
         if (useDefault) {
             baseCharacterAttribute = new BaseCharacterAttribute { Lv = 1, XP = 0, Movement = 3, HP = 100, Power = 2, MP = 100, Skill = 1, Speed = 1, Lucky = 1, Defense = 1, MagicResistance = 1 };
             combatAttributes = new CombatAttributes { Attack = 1, HitRate = 1, Cri = 1, Dodge = 1, };
@@ -50,9 +53,13 @@ public class CharacterBehaviour : MonoBehaviour {
             baseCharacterAttribute = new BaseCharacterAttribute { Lv = Lv, XP = XP, Movement = Movement, HP = HP, Power = Power, MP = MP, Skill = Skill, Speed = Speed, Lucky = Lucky, Defense = Defense, MagicResistance = MagicResistance };
             combatAttributes = new CombatAttributes { Attack = Attack, HitRate = HitRate, Cri = Cri, Dodge = Dodge, };
         }
+
+        transform.position = new Vector3((int)transform.position.x, (int)transform.position.y, (int)transform.position.z);
+
         pos.X = transform.position.x;
         pos.Y = transform.position.y;
         pos.Z = transform.position.z;
+
         entityManager.SetComponentData(entity, baseCharacterAttribute);
         entityManager.SetComponentData(entity, combatAttributes);
         entityManager.SetComponentData(entity, pos);
