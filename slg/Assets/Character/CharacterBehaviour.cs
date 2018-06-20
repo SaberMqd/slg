@@ -69,6 +69,9 @@ public class CharacterBehaviour : MonoBehaviour {
 	}
 
     public void PreAction() {
+        if (isEnemy != RoundManager.GetInstance().IsEnemyRound()) {
+            return;
+        }
         var em = World.Active.GetOrCreateManager<EntityManager>();
         var gm = GameObjectEntityManager.GetInstance();
         if (em.HasComponent(entity, typeof(PreActionData))) {

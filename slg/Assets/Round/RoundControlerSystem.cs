@@ -3,12 +3,25 @@
 public class RoundControlerSystem : ComponentSystem
 {
 
+    struct Group
+    {
+        public int Length;
+        public EntityArray entity;
+        public ComponentDataArray<RoundOverData> data;
+    }
+
+    [Inject] Group group;
+    EntityManager em = World.Active.GetOrCreateManager<EntityManager>();
+
     protected override void OnUpdate()
     {
-        if (false) {
-            var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-            var entity = entityManager.CreateEntity(typeof(MapDeleteType));
-            entityManager.SetComponentData<MapDeleteType>(entity, new MapDeleteType { Type = 1 });
+        for (int i = 0; i < group.Length; i++)
+        {
+            isEnemyRound = !isEnemyRound;
+            RoundManager.GetInstance().SetEnemyRound(isEnemyRound);
+            PostUpdateCommands.DestroyEntity(group.entity[i]);
         }
     }
+
+    private bool isEnemyRound = false;
 }
