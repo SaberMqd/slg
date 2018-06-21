@@ -10,7 +10,6 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 21200000}
   - component: {fileID: 6100000}
-  - component: {fileID: 11400000}
   m_Layer: 0
   m_Name: Pine_Tree
   m_TagString: Untagged
@@ -56,18 +55,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce0f2ad9faf07440a39301bf2ef9902, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sortOrderOffset: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
