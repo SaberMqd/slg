@@ -74,11 +74,10 @@ public class CharacterBehaviour : MonoBehaviour {
         }
         var em = World.Active.GetOrCreateManager<EntityManager>();
         var gm = GameObjectEntityManager.GetInstance();
-        if (em.HasComponent(entity, typeof(PreActionData))) {
-            return;
+        if (!em.HasComponent(entity, typeof(PreActionData))) {
+            em.AddComponent(entity, typeof(PreActionData));
         }
         gm.SetCurrentEntity(entity);
         gm.SetCurrentGameObject(gameObject);
-        em.AddComponent(entity, typeof(PreActionData));
     }
 }

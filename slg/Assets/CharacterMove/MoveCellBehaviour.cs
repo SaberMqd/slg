@@ -19,7 +19,6 @@ public class MoveCellBehaviour : MonoBehaviour {
         if (isExist)
         {
             em.AddComponentData(entity, new MovePosition { X = transform.position.x, Y = transform.position.y, Z = transform.position.z });
-            em.AddComponentData(entity, new DestroyMoveRangeData {});
         }
     }
 }

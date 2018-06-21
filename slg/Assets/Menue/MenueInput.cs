@@ -17,13 +17,12 @@ public class MenueInput : MonoBehaviour {
         buttonAttackObj.GetComponent<Button>().onClick.AddListener(AddPreAttackComponent);
         buttonSkillObj = GameObject.Find("ButtonSkill");
         buttonSkillObj.GetComponent<Button>().onClick.AddListener(AddPreSkillComponent);
-
         buttonOverObj = GameObject.Find("ButtonOver");
         buttonOverObj.GetComponent<Button>().onClick.AddListener(AddPreOverComponent);
     }
 
-    public void AddPreMoveComponent() {
-
+    public void AddPreMoveComponent()
+    {
         var entityManager = World.Active.GetOrCreateManager<EntityManager>();
         bool isExist = false;
         var entity =  GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
