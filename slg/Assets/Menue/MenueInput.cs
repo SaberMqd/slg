@@ -4,13 +4,14 @@ using UnityEngine.UI;
 
 public class MenueInput : MonoBehaviour {
 
-    private GameObject buttonMoveObj;
-    private GameObject buttonAttackObj;
-    private GameObject buttonSkillObj;
-    private GameObject buttonOverObj;
+    //private GameObject buttonMoveObj;
+    //private GameObject buttonAttackObj;
+    //private GameObject buttonSkillObj;
+    //private GameObject buttonOverObj;
 
 
     private void Start() {
+        /*
         buttonMoveObj = GameObject.Find("ButtonMove");
         buttonMoveObj.GetComponent<Button>().onClick.AddListener(AddPreMoveComponent);
         buttonAttackObj = GameObject.Find("ButtonAttack");
@@ -19,6 +20,7 @@ public class MenueInput : MonoBehaviour {
         buttonSkillObj.GetComponent<Button>().onClick.AddListener(AddPreSkillComponent);
         buttonOverObj = GameObject.Find("ButtonOver");
         buttonOverObj.GetComponent<Button>().onClick.AddListener(AddPreOverComponent);
+        */
     }
 
     public void AddPreMoveComponent()
