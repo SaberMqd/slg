@@ -28,8 +28,12 @@ public class MapCreateSystem : ComponentSystem
 
                 var terrains = XmlParaser<ItemCollection<XML.Data.Terrain>>.Paraser(Application.dataPath + "/Config/DemoMap.xml");
                 var cellNameIndex = 0;
+
+                int x = 0;
+                int y = 0;
                 foreach (var terr in terrains.Items)
                 {
+                    MapDataManager.GetInstance().map[terr.X][terr.Y] = terr.CellID;
                     var cellinfo = cellMap[terr.CellID];
                     GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>(cellinfo.Resourse));
                     terr_go.name = "mapcell";//+ cellNameIndex++;

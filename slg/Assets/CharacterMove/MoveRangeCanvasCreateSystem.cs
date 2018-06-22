@@ -19,7 +19,7 @@ public class CreateMoveRangeSystem : ComponentSystem
         for (int i = 0; i < group.Length; i++)
         {
             var pos = em.GetComponentData<CharacterCoordinate>(group.entity[i]);
-            MoveRangeManager.GetInstance().CreateMoveRange((int)pos.X, (int)pos.Y,(int)pos.Z, 0);
+            MoveRangeManager.GetInstance().CreateMoveRange((int)pos.X, (int)pos.Y,(int)pos.Z, 3);
             PostUpdateCommands.RemoveComponent<PreMoveData>(group.entity[i]);
         }
 
