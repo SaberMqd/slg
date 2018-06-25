@@ -19,6 +19,7 @@ public class AttackRangeCanvasCreateSystem : ComponentSystem
         {
             var pos = em.GetComponentData<CharacterCoordinate>(group.entity[i]);
             AttackRangeManager.GetInstance().CreateAttackRange((int)pos.X, (int)pos.Y, (int)pos.Z, 0);
+            RoundManager.GetInstance().isAttacking = true;
             PostUpdateCommands.RemoveComponent<PreAttackData>(group.entity[i]);
         }
 

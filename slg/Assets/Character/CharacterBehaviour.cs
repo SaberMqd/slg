@@ -69,6 +69,7 @@ public class CharacterBehaviour : MonoBehaviour {
 	}
 
     public void PreAction() {
+        //Debug.Log(gameObject.GetComponent<CharacterBehaviour>());
         if (isEnemy != RoundManager.GetInstance().IsEnemyRound()) {
             return;
         }

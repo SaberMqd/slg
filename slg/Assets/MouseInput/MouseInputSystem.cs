@@ -19,6 +19,13 @@ public class MouseInputSystem : ComponentSystem
                 Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.name == "character_1001")
                 {
+                    if (RoundManager.GetInstance().isAttacking) {
+                        var characterBehaviour = hit.collider.gameObject.GetComponentInParent<CharacterBehaviour>();
+                        characterBehaviour.HP -= 3;
+                        em.CreateEntity(typeof(DestroyAttackRange));
+                        return;
+                    }
+
                     if (isExist)
                     {
                         em.AddComponent(e, typeof(DestroyMoveRangeData));
@@ -37,10 +44,10 @@ public class MouseInputSystem : ComponentSystem
                 }
                 else if (hit.collider.gameObject.name == "attack_cell")
                 {
-                    em.AddComponent(e, typeof(DestroyMoveRangeData));
-                    em.AddComponent(e, typeof(DestroyAttackRange));
-                    var ch = hit.collider.gameObject.GetComponent<AttackCellBehaviour>();
-                    ch.AttackTo();
+                    //em.AddComponent(e, typeof(DestroyMoveRangeData));
+                    //em.AddComponent(e, typeof(DestroyAttackRange));
+                    //var ch = hit.collider.gameObject.GetComponent<AttackCellBehaviour>();
+                    //ch.AttackTo();
                 }
                 else if(hit.collider.gameObject.name == "mapcell")
                 {

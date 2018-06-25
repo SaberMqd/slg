@@ -2,6 +2,8 @@ public class RoundManager {
     private static RoundManager Instance = null;
     private bool isEnemyRound = false;
 
+    public bool isAttacking = false;
+
     private RoundManager()
     {
 

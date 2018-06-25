@@ -4,23 +4,7 @@ using UnityEngine.UI;
 
 public class MenueInput : MonoBehaviour {
 
-    //private GameObject buttonMoveObj;
-    //private GameObject buttonAttackObj;
-    //private GameObject buttonSkillObj;
-    //private GameObject buttonOverObj;
-
-
     private void Start() {
-        /*
-        buttonMoveObj = GameObject.Find("ButtonMove");
-        buttonMoveObj.GetComponent<Button>().onClick.AddListener(AddPreMoveComponent);
-        buttonAttackObj = GameObject.Find("ButtonAttack");
-        buttonAttackObj.GetComponent<Button>().onClick.AddListener(AddPreAttackComponent);
-        buttonSkillObj = GameObject.Find("ButtonSkill");
-        buttonSkillObj.GetComponent<Button>().onClick.AddListener(AddPreSkillComponent);
-        buttonOverObj = GameObject.Find("ButtonOver");
-        buttonOverObj.GetComponent<Button>().onClick.AddListener(AddPreOverComponent);
-        */
     }
 
     public void AddPreMoveComponent()
@@ -42,6 +26,7 @@ public class MenueInput : MonoBehaviour {
         var entityManager = World.Active.GetOrCreateManager<EntityManager>();
         bool isExist = false;
         var entity = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
+        Debug.Log(entity);
         if (isExist)
         {
             if (entityManager.HasComponent(entity, typeof(PreAttackData)))
