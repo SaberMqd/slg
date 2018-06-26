@@ -402,8 +402,51 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 224017427397387026, guid: f13dd294a5cef6d4e8216e02969ee612,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -47
+      objectReference: {fileID: 0}
+    - target: {fileID: 224017427397387026, guid: f13dd294a5cef6d4e8216e02969ee612,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224017427397387026, guid: f13dd294a5cef6d4e8216e02969ee612,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224017427397387026, guid: f13dd294a5cef6d4e8216e02969ee612,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: -51.619995
+      objectReference: {fileID: 0}
+    - target: {fileID: 224017427397387026, guid: f13dd294a5cef6d4e8216e02969ee612,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224017427397387026, guid: f13dd294a5cef6d4e8216e02969ee612,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 80.32001
+      objectReference: {fileID: 0}
+    - target: {fileID: 224017427397387026, guid: f13dd294a5cef6d4e8216e02969ee612,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224017427397387026, guid: f13dd294a5cef6d4e8216e02969ee612,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114380334017604714, guid: f13dd294a5cef6d4e8216e02969ee612, type: 2}
+    - {fileID: 23488089772936360, guid: f13dd294a5cef6d4e8216e02969ee612, type: 2}
+    - {fileID: 33614869185075240, guid: f13dd294a5cef6d4e8216e02969ee612, type: 2}
+    - {fileID: 64495412703676128, guid: f13dd294a5cef6d4e8216e02969ee612, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f13dd294a5cef6d4e8216e02969ee612, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &521140139
