@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Unity.Entities;
+using slg.map;
 
 public class Main : MonoBehaviour
 {

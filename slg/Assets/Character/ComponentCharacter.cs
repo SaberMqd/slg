@@ -1,6 +1,10 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
+namespace slg.character.attribute {
+    
+}
+
 public struct BaseCharacterAttribute : IComponentData
 {
     public int Lv;

@@ -13,6 +13,8 @@ public class MapDataManager {
 
     public int[][] map = null;
 
+    public bool isCreated = false;
+
     static public MapDataManager GetInstance() {
         if (instance == null) {
             instance = new MapDataManager();

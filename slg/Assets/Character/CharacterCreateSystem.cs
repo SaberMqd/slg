@@ -1,7 +1,8 @@
-﻿using Unity.Entities;
+﻿using slg.map;
+using Unity.Entities;
 using UnityEngine;
 
-[UpdateAfter(typeof(MapCreateSystem))]
+[UpdateAfter(typeof(RandomCreateMapSystem))]
 public class CharacterCreateSystem : ComponentSystem
 {
     struct Group
@@ -9,7 +10,6 @@ public class CharacterCreateSystem : ComponentSystem
         public int Length;
         public EntityArray entity;
         public ComponentDataArray<CreateCharaterData> data;
-
     }
 
     EntityManager entityManager = World.Active.GetOrCreateManager<EntityManager>();
