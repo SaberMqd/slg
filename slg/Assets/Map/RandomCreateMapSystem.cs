@@ -21,7 +21,7 @@ public class RandomCreateMapSystem : ComponentSystem
         for (int i = 0; i < group.Length; i++)
         {
             if (MapDataManager.GetInstance().isCreated) {
-                PostUpdateCommands.DestroyEntity(group.entity[i]);
+                //PostUpdateCommands.DestroyEntity(group.entity[i]);
                 continue;
             }
         }

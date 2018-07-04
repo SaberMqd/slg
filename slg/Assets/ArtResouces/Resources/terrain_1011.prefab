@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114027731379092468}
   - component: {fileID: 114747540191998092}
   m_Layer: 0
-  m_Name: Terrain_1011
+  m_Name: terrain_1011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedData:
     mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 2100000, guid: 1a5f3b34f6b9cab4c97f56c3869ae65d, type: 2}
+    material: {fileID: 0}
     subMesh: 0
     castShadows: 0
     receiveShadows: 0

@@ -25,6 +25,10 @@ namespace slg.map
 
             for (int i = 0; i < entityArray.Length; i++)
             {
+                UnityEngine.Debug.Log(" i: " + i);
+                if (MapDataManager.GetInstance().isCreated) {
+                    return;
+                }
                 string mapPath = sharedComponentArray[i].path;
                 string cellAttPath = Application.dataPath + "/Config/cellAtt.xml";
 
@@ -46,19 +50,25 @@ namespace slg.map
                     MapDataManager.GetInstance().map[terr.X][terr.Y] = terr.CellID;
                     var cellinfo = cellMap[terr.CellID];
                     string resource_path = "Terrain_" + terr.CellID;
-                    UnityEngine.Debug.Log("aresource_path： "+ resource_path);
-                    GameObject terr_go = GameObject.Instantiate(Resources.Load<GameObject>(resource_path));
-                    terr_go.name = "mapcell";
+                    var prefab = Resources.Load<GameObject>(resource_path);
+                    GameObject terr_go = GameObject.Instantiate(prefab);
                     var e = terr_go.GetComponent<GameObjectEntity>();
                     em.SetComponentData(e.Entity, new Position
                     {
                         Value = new float3(terr.X, 0, terr.Y)
                     });
+
                 }
+
                 MapDataManager.GetInstance().isCreated = true;
-                PostUpdateCommands.DestroyEntity(entityArray[i]);
-                
+                //em.RemoveComponent(entityArray[i], typeof(FileCreateMap));
+                //PostUpdateCommands.DestroyEntity(entityArray[i]);
+                //group.ResetFilter();
+                //group.Dispose();
+                UnityEngine.Debug.Log(" delete over i: " + i);
+
             }
+
         }
     }
 }

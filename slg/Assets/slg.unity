@@ -1771,7 +1771,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1460379095}
   - component: {fileID: 1460379094}
-  - component: {fileID: 1460379093}
   - component: {fileID: 1460379092}
   m_Layer: 0
   m_Name: MapCreate
@@ -1793,20 +1792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedData:
     path: 
-    use_defalt_path: 1
---- !u!114 &1460379093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1460379091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6c30048810f9b94a903b5ffcc420a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedData:
-    Type: 0
+    use_defalt_path: 0
 --- !u!114 &1460379094
 MonoBehaviour:
   m_ObjectHideFlags: 0
