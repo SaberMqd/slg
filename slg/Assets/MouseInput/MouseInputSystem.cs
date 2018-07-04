@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using slg.controler;
+using Unity.Entities;
 using UnityEngine;
 
 public class MouseInputSystem : ComponentSystem
@@ -8,55 +9,41 @@ public class MouseInputSystem : ComponentSystem
 
     protected override void OnUpdate()
     {
+        
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                bool isExist = false;
-                var e = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
                 Debug.Log(hit.collider.gameObject.name);
                 if (hit.collider.gameObject.name == "character_1001")
                 {
+                    var e = hit.collider.gameObject.GetComponent<GameObjectEntity>();
+
+                    if (!em.HasComponent(e.Entity, typeof(PreAction))) {
+                        em.AddComponent(e.Entity, typeof(PreAction));
+                        em.AddComponentData(e.Entity, new PreAction { actionType = ActionType.ACTION_SELECT });
+                    }
+
+                    /*
                     if (RoundManager.GetInstance().isAttacking) {
                         var characterBehaviour = hit.collider.gameObject.GetComponentInParent<CharacterBehaviour>();
                         characterBehaviour.HP -= 3;
                         em.CreateEntity(typeof(DestroyAttackRange));
                         return;
                     }
-
-                    if (isExist)
-                    {
-                        em.AddComponent(e, typeof(DestroyMoveRangeData));
-                        em.AddComponent(e, typeof(DestroyAttackRange));
-                        GameObjectEntityManager.GetInstance().SetCurrentExist(false);
-                    }
-                    var ch = hit.collider.gameObject.GetComponentInParent<CharacterBehaviour>();
-                    ch.PreAction();
+                    */
                 }
                 else if (hit.collider.gameObject.name == "range_cell")
                 {
-                    em.AddComponent(e, typeof(DestroyMoveRangeData));
-                    em.AddComponent(e, typeof(DestroyAttackRange));
-                    var ch = hit.collider.gameObject.GetComponent<MoveCellBehaviour>();
-                    ch.MoveTo();
-                }
-                else if (hit.collider.gameObject.name == "attack_cell")
-                {
                     //em.AddComponent(e, typeof(DestroyMoveRangeData));
-                    //em.AddComponent(e, typeof(DestroyAttackRange));
-                    //var ch = hit.collider.gameObject.GetComponent<AttackCellBehaviour>();
-                    //ch.AttackTo();
+                   //em.AddComponent(e, typeof(DestroyAttackRange));
+                    //var ch = hit.collider.gameObject.GetComponent<MoveCellBehaviour>();
+                    //ch.MoveTo();
                 }
                 else if(hit.collider.gameObject.name == "mapcell")
                 {
-                    if (isExist)
-                    {
-                        em.AddComponent(e, typeof(DestroyMoveRangeData));
-                        em.AddComponent(e, typeof(DestroyAttackRange));
-                        GameObjectEntityManager.GetInstance().SetCurrentExist(false);
-                    }
                 }
             }
         }
@@ -68,10 +55,11 @@ public class MouseInputSystem : ComponentSystem
             var e = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
             if (isExist)
             {
-                em.AddComponent(e, typeof(DestroyMoveRangeData));
-                em.AddComponent(e, typeof(DestroyAttackRange));
-                GameObjectEntityManager.GetInstance().SetCurrentExist(false);
+                //em.AddComponent(e, typeof(DestroyMoveRangeData));
+                //em.AddComponent(e, typeof(DestroyAttackRange));
+                //GameObjectEntityManager.GetInstance().SetCurrentExist(false);
             }
         }
+        
     }
 }

@@ -39,7 +39,7 @@ namespace slg.controler
                     if (actionType == ActionType.ACTION_SELECT)
                     {
                         actionType = ActionType.ACTION_MOVE;
-                        EntityManager.AddComponent(currentEntity, typeof(CreateMoveRangeData));
+                        EntityManager.AddComponent(currentEntity, typeof(slg.move.CreateMoveRangeData));
                     }
                     break;
                 case ActionType.ACTION_SELECT:

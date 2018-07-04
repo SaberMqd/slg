@@ -1,27 +1,34 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-public class CreateMoveRangeSystem : ComponentSystem
-{
+using slg.controler;
+using Unity.Transforms;
 
-    struct Group
+namespace slg.move {
+
+    public class CreateMoveRangeSystem : ComponentSystem
     {
-        public int Length;
-        public EntityArray entity;
-        public ComponentDataArray<PreMoveData> data;
-    }
 
-    [Inject] Group group;
-    EntityManager em = World.Active.GetOrCreateManager<EntityManager>();
-
-    protected override void OnUpdate()
-    {
-        for (int i = 0; i < group.Length; i++)
+        struct Group
         {
-            var pos = em.GetComponentData<CharacterCoordinate>(group.entity[i]);
-            MoveRangeManager.GetInstance().CreateMoveRange((int)pos.X, (int)pos.Y,(int)pos.Z, 3);
-            PostUpdateCommands.RemoveComponent<PreMoveData>(group.entity[i]);
+            public int Length;
+            public EntityArray entity;
+            public ComponentDataArray<PreMove> data;
         }
 
+        [Inject] Group group;
+        EntityManager em = World.Active.GetOrCreateManager<EntityManager>();
+
+        protected override void OnUpdate()
+        {
+            for (int i = 0; i < group.Length; i++)
+            {
+                var pos = em.GetComponentData<Position>(group.entity[i]);
+                MoveRangeManager.GetInstance().CreateMoveRange((int)pos.Value.x, (int)pos.Value.y,(int)pos.Value.z, 3);
+                PostUpdateCommands.RemoveComponent<PreMove>(group.entity[i]);
+            }
+
+        }
     }
 }
+

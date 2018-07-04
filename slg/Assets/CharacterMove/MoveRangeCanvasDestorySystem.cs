@@ -1,26 +1,30 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-[UpdateAfter(typeof(CharacterMoveSystem))]
-public class MoveRangeCanvasDestorySystem : ComponentSystem
+namespace slg.move
 {
 
-    struct Group
+    [UpdateAfter(typeof(CharacterMoveSystem))]
+    public class MoveRangeCanvasDestorySystem : ComponentSystem
     {
-        public int Length;
-        public EntityArray entity;
-        public ComponentDataArray<DestroyMoveRangeData> data;
-    }
 
-    [Inject] Group group;
-
-    protected override void OnUpdate()
-    {
-        for (int i = 0; i < group.Length; i++)
+        struct Group
         {
-            MoveRangeManager.GetInstance().DestroyMoveRange();
-            PostUpdateCommands.RemoveComponent<DestroyMoveRangeData>(group.entity[i]);
+            public int Length;
+            public EntityArray entity;
+            public ComponentDataArray<DestroyMoveRangeData> data;
         }
 
+        [Inject] Group group;
+
+        protected override void OnUpdate()
+        {
+            for (int i = 0; i < group.Length; i++)
+            {
+                MoveRangeManager.GetInstance().DestroyMoveRange();
+                PostUpdateCommands.RemoveComponent<DestroyMoveRangeData>(group.entity[i]);
+            }
+
+        }
     }
 }
