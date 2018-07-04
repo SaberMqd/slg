@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedData:
     path: 
-    use_defalt_path: 0
+    use_defalt_path: 1
 --- !u!114 &1460379094
 MonoBehaviour:
   m_ObjectHideFlags: 0

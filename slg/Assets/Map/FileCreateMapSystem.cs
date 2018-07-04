@@ -4,38 +4,38 @@ using UnityEngine;
 using Unity.Transforms;
 using Unity.Mathematics;
 using XML.Data;
+using Unity.Collections;
 
 namespace slg.map
 {
 
     public class FileCreateMapSystem : ComponentSystem
     {
-        ComponentGroup group;
-        EntityManager em = World.Active.GetOrCreateManager<EntityManager>();
 
-        protected override void OnCreateManager(int capacity)
+        struct Group
         {
-            group = GetComponentGroup(typeof(FileCreateMap));
+            [ReadOnly]
+            public SharedComponentDataArray<FileCreateMap> file;
+            public EntityArray Entity;
+            public int Length;
         }
+
+        [Inject] Group group;
 
         protected override void OnUpdate()
         {
-            var entityArray = group.GetEntityArray();
-            var sharedComponentArray = group.GetSharedComponentDataArray<FileCreateMap>();
 
-            for (int i = 0; i < entityArray.Length; i++)
+            while (group.Length != 0)
             {
-                UnityEngine.Debug.Log(" i: " + i);
-                if (MapDataManager.GetInstance().isCreated) {
-                    return;
-                }
-                string mapPath = sharedComponentArray[i].path;
+                var sourceEntity = group.Entity[0];
+                string mapPath = group.file[0].path;
                 string cellAttPath = Application.dataPath + "/Config/cellAtt.xml";
 
-                if (sharedComponentArray[i].use_defalt_path == true) {
+                if (group.file[0].use_defalt_path == true)
+                {
                     mapPath = Application.dataPath + "/Config/DemoMap.xml";
                 }
-            
+
                 var cells = XML.Paraser.XmlParaser<ItemCollection<XML.Data.Cell>>.Paraser(Application.dataPath + "/Config/cellAtt.xml");
                 Dictionary<int, Cell> cellMap = new Dictionary<int, Cell>();
                 foreach (var cell in cells.Items)
@@ -53,7 +53,7 @@ namespace slg.map
                     var prefab = Resources.Load<GameObject>(resource_path);
                     GameObject terr_go = GameObject.Instantiate(prefab);
                     var e = terr_go.GetComponent<GameObjectEntity>();
-                    em.SetComponentData(e.Entity, new Position
+                    EntityManager.SetComponentData(e.Entity, new Position
                     {
                         Value = new float3(terr.X, 0, terr.Y)
                     });
@@ -61,13 +61,13 @@ namespace slg.map
                 }
 
                 MapDataManager.GetInstance().isCreated = true;
-                //em.RemoveComponent(entityArray[i], typeof(FileCreateMap));
-                //PostUpdateCommands.DestroyEntity(entityArray[i]);
-                //group.ResetFilter();
-                //group.Dispose();
-                UnityEngine.Debug.Log(" delete over i: " + i);
+
+
+                EntityManager.RemoveComponent<FileCreateMap>(sourceEntity);
+                UpdateInjectedComponentGroups();
 
             }
+
 
         }
     }
