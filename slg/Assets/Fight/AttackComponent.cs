@@ -11,3 +11,6 @@ public struct AttackPhysics : IComponentData
 }
 
 public struct DestroyAttackRange : IComponentData{}
+
+public struct CreateAttackRangeData : IComponentData { }
+
