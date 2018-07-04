@@ -1,4 +1,5 @@
 ﻿using Unity.Entities;
+using Unity.Transforms;
 
 namespace slg.move
 {
@@ -10,8 +11,7 @@ namespace slg.move
         {
             public int Length;
             public EntityArray entity;
-            public ComponentDataArray<MovePosition> data;
-            public ComponentDataArray<CharacterCoordinate> posdata;
+            public ComponentDataArray<MoveTo> posdata;
         }
 
         [Inject] Group group;
@@ -21,18 +21,8 @@ namespace slg.move
         {
             for (int i = 0; i < group.Length; i++)
             {
-                bool isExist = false;
-                var go = GameObjectEntityManager.GetInstance().GetCurrentGameObject(out isExist);
-                if (isExist)
-                {
-                    go.transform.position = new UnityEngine.Vector3(group.data[i].X, group.data[i].Y, group.data[i].Z);
-                }
-                var pos = group.posdata[i];
-                pos.X = group.data[i].X;
-                pos.Y = group.data[i].Y;
-                pos.Z = group.data[i].Z;
-                group.posdata[i] = pos;
-                PostUpdateCommands.RemoveComponent<MovePosition>(group.entity[i]);
+                em.SetComponentData(group.entity[i], group.posdata[i].position);
+                PostUpdateCommands.RemoveComponent<MoveTo>(group.entity[i]);
             }
         }
     }

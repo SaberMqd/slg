@@ -9,6 +9,7 @@ namespace slg.controler
         ACTION_MOVE,
         ACTION_ATTACK,
         ACTION_SKILL,
+        ACTION_MOVE_TO,
     }
 
     public struct PreAction : IComponentData {

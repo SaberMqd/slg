@@ -1,6 +1,6 @@
-﻿using Unity.Entities;
+﻿using slg.controler;
+using Unity.Entities;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MenueInput : MonoBehaviour {
 
@@ -10,46 +10,22 @@ public class MenueInput : MonoBehaviour {
     public void AddPreMoveComponent()
     {
         var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-        bool isExist = false;
-        var entity =  GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
-        if (isExist)
-        {
-            if (entityManager.HasComponent(entity, typeof(PreMoveData))) {
-                return;
-            }
-            entityManager.AddComponentData(entity, new PreMoveData { });
-        }
+        var e = entityManager.CreateEntity(typeof(PreAction));
+        entityManager.SetComponentData(e, new PreAction { actionType = ActionType.ACTION_MOVE });
     }
 
     public void AddPreAttackComponent()
     {
         var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-        bool isExist = false;
-        var entity = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
-        Debug.Log(entity);
-        if (isExist)
-        {
-            if (entityManager.HasComponent(entity, typeof(PreAttackData)))
-            {
-                return;
-            }
-            entityManager.AddComponentData(entity, new PreAttackData { });
-        }
+        var e = entityManager.CreateEntity(typeof(PreAction));
+        entityManager.SetComponentData(e, new PreAction { actionType = ActionType.ACTION_ATTACK });
     }
 
     public void AddPreSkillComponent()
     {
         var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-        bool isExist = false;
-        var entity = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
-        if (isExist)
-        {
-            if (entityManager.HasComponent(entity, typeof(PreSkillData)))
-            {
-                return;
-            }
-            entityManager.AddComponentData(entity, new PreSkillData { });
-        }
+        var e = entityManager.CreateEntity(typeof(PreAction));
+        entityManager.SetComponentData(e, new PreAction { actionType = ActionType.ACTION_SKILL });
     }
 
     public void AddPreOverComponent()

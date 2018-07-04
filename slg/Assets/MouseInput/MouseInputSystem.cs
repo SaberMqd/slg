@@ -1,5 +1,6 @@
 ﻿using slg.controler;
 using Unity.Entities;
+using Unity.Transforms;
 using UnityEngine;
 
 public class MouseInputSystem : ComponentSystem
@@ -17,30 +18,21 @@ public class MouseInputSystem : ComponentSystem
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.Log(hit.collider.gameObject.name);
-                if (hit.collider.gameObject.name == "character_1001")
+                if (hit.collider.gameObject.name == "Character_1001")
                 {
                     var e = hit.collider.gameObject.GetComponent<GameObjectEntity>();
-
                     if (!em.HasComponent(e.Entity, typeof(PreAction))) {
                         em.AddComponent(e.Entity, typeof(PreAction));
-                        em.AddComponentData(e.Entity, new PreAction { actionType = ActionType.ACTION_SELECT });
+                        em.SetComponentData(e.Entity, new PreAction { actionType = ActionType.ACTION_SELECT });
                     }
-
-                    /*
-                    if (RoundManager.GetInstance().isAttacking) {
-                        var characterBehaviour = hit.collider.gameObject.GetComponentInParent<CharacterBehaviour>();
-                        characterBehaviour.HP -= 3;
-                        em.CreateEntity(typeof(DestroyAttackRange));
-                        return;
-                    }
-                    */
                 }
-                else if (hit.collider.gameObject.name == "range_cell")
+                else if (hit.collider.gameObject.name == "MoveCell")
                 {
-                    //em.AddComponent(e, typeof(DestroyMoveRangeData));
-                   //em.AddComponent(e, typeof(DestroyAttackRange));
-                    //var ch = hit.collider.gameObject.GetComponent<MoveCellBehaviour>();
-                    //ch.MoveTo();
+                    var e = hit.collider.gameObject.GetComponent<GameObjectEntity>();
+                    var pos = em.GetComponentData<Position>(e.Entity);
+                    em.CreateEntity(typeof(Position), typeof(PreAction));
+                    em.SetComponentData(e.Entity, new Position { Value = pos.Value });
+                    em.SetComponentData(e.Entity, new PreAction { actionType = ActionType.ACTION_MOVE_TO });
                 }
                 else if(hit.collider.gameObject.name == "mapcell")
                 {
@@ -51,14 +43,6 @@ public class MouseInputSystem : ComponentSystem
         //右键撤销。
         if (Input.GetMouseButtonDown(1))
         {
-            bool isExist = false;
-            var e = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
-            if (isExist)
-            {
-                //em.AddComponent(e, typeof(DestroyMoveRangeData));
-                //em.AddComponent(e, typeof(DestroyAttackRange));
-                //GameObjectEntityManager.GetInstance().SetCurrentExist(false);
-            }
         }
         
     }

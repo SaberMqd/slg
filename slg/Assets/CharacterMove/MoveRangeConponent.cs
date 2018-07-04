@@ -1,4 +1,5 @@
 ﻿using Unity.Entities;
+using Unity.Transforms;
 
 namespace slg.move
 {
@@ -6,4 +7,7 @@ namespace slg.move
 
     public struct DestroyMoveRangeData : IComponentData { }
 
+    public struct MoveTo : IComponentData {
+        public Position position;
+    }
 }
