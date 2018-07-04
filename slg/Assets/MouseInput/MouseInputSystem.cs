@@ -17,7 +17,6 @@ public class MouseInputSystem : ComponentSystem
                 bool isExist = false;
                 var e = GameObjectEntityManager.GetInstance().GetCurrentEntity(out isExist);
                 Debug.Log(hit.collider.gameObject.name);
-                //.GetComponent<BoxCollider>() != null
                 if (hit.collider.gameObject.name == "character_1001")
                 {
                     if (RoundManager.GetInstance().isAttacking) {
