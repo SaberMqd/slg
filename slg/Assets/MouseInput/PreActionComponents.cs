@@ -19,5 +19,8 @@ namespace slg.controler
     public struct PreMove : IComponentData { }
     public struct PreAttack : IComponentData { }
     public struct PreSkill : IComponentData { }
+    public struct MoveOver : IComponentData { }
+    public struct AttackOver : IComponentData { }
+    public struct SkillOver : IComponentData { }
 
 }

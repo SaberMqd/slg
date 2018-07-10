@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using slg.controler;
+using Unity.Entities;
 using UnityEngine;
 
 namespace slg.move
@@ -12,19 +13,26 @@ namespace slg.move
         {
             public int Length;
             public EntityArray entity;
-            public ComponentDataArray<DestroyMoveRangeData> data;
+            public ComponentDataArray<MoveOver> data;
         }
 
         [Inject] Group group;
 
         protected override void OnUpdate()
         {
-            for (int i = 0; i < group.Length; i++)
-            {
-                MoveRangeManager.GetInstance().DestroyMoveRange();
-                PostUpdateCommands.RemoveComponent<DestroyMoveRangeData>(group.entity[i]);
+            if (group.Length == 0) {
+                return;
             }
-
+            var entites = EntityManager.GetAllEntities();
+            foreach (var e in entites) {
+                if (EntityManager.HasComponent<MoveDes>(e)) {
+                    EntityManager.DestroyEntity(e);
+                }
+            }
+            entites.Dispose();
+            //MoveRangeManager.GetInstance().DestroyMoveRange();
+            PostUpdateCommands.RemoveComponent<MoveOver>(group.entity[0]);
+            UpdateInjectedComponentGroups();
         }
     }
 }
