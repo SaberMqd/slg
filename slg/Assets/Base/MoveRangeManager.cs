@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections;
+using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 
 public class MoveRangeManager {
 
     static private MoveRangeManager instance;
 
-    private List<GameObject> range_cells = new List<GameObject>();
+    private List<Entity> range_cells = new List<Entity>();
 
     static public MoveRangeManager GetInstance()
     {
@@ -18,8 +22,9 @@ public class MoveRangeManager {
     }
 
     public void DestroyMoveRange() {
+        var em = World.Active.GetOrCreateManager<EntityManager>();
         foreach (var go in range_cells) {
-            GameObject.Destroy(go);
+            em.DestroyEntity(go);
         }
         range_cells.Clear();
     }
@@ -37,13 +42,19 @@ public class MoveRangeManager {
     };
 
     public void CreateMoveRange(int x, int y, int z, int passValue) {
-
+        GameObject.Instantiate(Resources.Load<GameObject>("MoveCell"));
+        return;
+        var em = World.Active.GetOrCreateManager<EntityManager>();
+        var entity = em.Instantiate(Resources.Load<GameObject>("MoveCell"));
+        em.SetComponentData<Position>(entity, new Position { Value = new float3 { x = x+1, y = (float)y + 0.1f, z = 1 } });
+        range_cells.Add(entity);
+        UnityEngine.Debug.Log("CreateMoveRange");
+        /*
         Stack<Pos> tmpFindStack = new Stack<Pos>();
         HashSet<RealPos> tmpFindResult = new HashSet<RealPos>();
 
         tmpFindStack.Push(new Pos { x = x, y = z, lastMovement = passValue });
 
-        var count = 0;
         while (tmpFindStack.Count != 0) {
             var node = tmpFindStack.Pop();
             if (node.lastMovement >= 0) {
@@ -116,15 +127,17 @@ public class MoveRangeManager {
             }
         }
         Debug.Log("tmpFindResult.size " + tmpFindResult.Count);
+        var em = World.Active.GetOrCreateManager<EntityManager>();
+
         foreach (var node in tmpFindResult) {
             if (node.x == x && node.y == z) {
                 continue;
             }
-            GameObject move_cell = GameObject.Instantiate(Resources.Load<GameObject>("range_cell"));
-            move_cell.transform.position = new Vector3(node.x, (float)y+0.1f, node.y);
-            move_cell.name = "range_cell";
-            range_cells.Add(move_cell);
+            var entity = em.Instantiate(Resources.Load<GameObject>("MoveCell"));
+            em.SetComponentData<Position>(entity, new Position { Value = new float3 { x = node.x, y = (float)y + 0.1f, z = node.y } });
+            range_cells.Add(entity);
         }
+        */
     }
 
     

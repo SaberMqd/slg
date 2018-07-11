@@ -15,8 +15,8 @@ namespace slg.controler
             public ComponentDataArray<PreAction> data;
         }
 
-        [ReadOnly]
-        private Entity currentEntity;
+        //[ReadOnly]
+        static private Entity currentEntity;
 
         private ActionType actionType = ActionType.ACTION_NONE;
 
@@ -33,8 +33,13 @@ namespace slg.controler
                     if (actionType == ActionType.ACTION_SELECT)
                     {
                         actionType = ActionType.ACTION_ATTACK;
-                        EntityManager.AddComponent(currentEntity, typeof(CreateAttackRangeData));
+                        EntityManager.AddComponent(currentEntity, typeof(PreAttack));
                         PostUpdateCommands.DestroyEntity(group.entity[0]);
+
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("reset");
 
                     }
                     break;
@@ -43,8 +48,15 @@ namespace slg.controler
                     if (actionType == ActionType.ACTION_SELECT)
                     {
                         actionType = ActionType.ACTION_MOVE;
-                        EntityManager.AddComponent(currentEntity, typeof(slg.move.CreateMoveRangeData));
+                        if (EntityManager.Exists(currentEntity)) {
+                            PostUpdateCommands.AddComponent(currentEntity, new PreMove{ });
+                        }
                         PostUpdateCommands.DestroyEntity(group.entity[0]);
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("reset");
+
 
                     }
                     break;
@@ -57,22 +69,33 @@ namespace slg.controler
                     }
                     else {
                         //执行撤销操作
+                        UnityEngine.Debug.Log("reset");
+                        PostUpdateCommands.RemoveComponent<PreAction>(group.entity[0]);
                     }
                     break;
                 case ActionType.ACTION_SKILL:
                     if (actionType == ActionType.ACTION_SELECT)
                     {
                         actionType = ActionType.ACTION_SKILL;
-                        EntityManager.AddComponent(currentEntity, typeof(CreateSkillData));
+                        EntityManager.AddComponent(currentEntity, typeof(PreSkill));
                         PostUpdateCommands.DestroyEntity(group.entity[0]);
-
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("reset");
                     }
                     break;
                 case ActionType.ACTION_MOVE_TO:
-                    if (actionType == ActionType.ACTION_MOVE){
+                    if (actionType == ActionType.ACTION_MOVE)
+                    {
                         var pos = EntityManager.GetComponentData<Position>(group.entity[0]);
                         EntityManager.AddComponentData(currentEntity, new MoveTo { position = pos });
                         actionType = ActionType.ACTION_NONE;
+                        PostUpdateCommands.DestroyEntity(group.entity[0]);
+                    }
+                    else
+                    {
+                        UnityEngine.Debug.Log("reset");
                     }
 
                     break;
