@@ -39,10 +39,9 @@ GameObject:
   - component: {fileID: 114157273894829490}
   - component: {fileID: 114562433278879178}
   - component: {fileID: 114493380083079946}
-  - component: {fileID: 114893006852115860}
   - component: {fileID: 114725359375466224}
   m_Layer: 0
-  m_Name: terrain_1002
+  m_Name: Terrain_1002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,23 +150,6 @@ MonoBehaviour:
     MaxCent: 0
     MinDistance: 0
     SameDistance: 0
---- !u!114 &114893006852115860
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1795219173028640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0fd4427893a4a16ba0c267dfd00217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedData:
-    mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 0}
-    subMesh: 0
-    castShadows: 0
-    receiveShadows: 0
 --- !u!212 &212581313476573162
 SpriteRenderer:
   m_ObjectHideFlags: 1

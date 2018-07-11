@@ -23,10 +23,9 @@ GameObject:
   - component: {fileID: 114785728281412338}
   - component: {fileID: 114396896973240992}
   - component: {fileID: 114969364703235518}
-  - component: {fileID: 114025597447947524}
   - component: {fileID: 114355005861466048}
   m_Layer: 0
-  m_Name: terrain_1007
+  m_Name: Terrain_1007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,23 +74,6 @@ Transform:
   m_Father: {fileID: 4384129977926202}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &114025597447947524
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1389680313567144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0fd4427893a4a16ba0c267dfd00217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedData:
-    mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 0}
-    subMesh: 0
-    castShadows: 0
-    receiveShadows: 0
 --- !u!114 &114355005861466048
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -39,10 +39,9 @@ GameObject:
   - component: {fileID: 114650045999822516}
   - component: {fileID: 114953578341058688}
   - component: {fileID: 114616823523283032}
-  - component: {fileID: 114493236214192330}
   - component: {fileID: 114075414677191132}
   m_Layer: 0
-  m_Name: terrain_1010
+  m_Name: Terrain_1010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,23 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114493236214192330
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1523474505106922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0fd4427893a4a16ba0c267dfd00217, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedData:
-    mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
-    material: {fileID: 0}
-    subMesh: 0
-    castShadows: 0
-    receiveShadows: 0
 --- !u!114 &114616823523283032
 MonoBehaviour:
   m_ObjectHideFlags: 1
