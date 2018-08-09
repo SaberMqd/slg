@@ -40,15 +40,19 @@ public class KeyInputSystem : ComponentSystem
                 Camera.main.orthographicSize -= 0.5F;
         }
 
-        if (!isOverlook && Input.GetKeyDown("q"))
+        if (Input.GetKeyDown("q"))
         {
-            Camera.main.transform.Rotate(45,0,0);
-            isOverlook = true;
+            if (isOverlook) {
+                Camera.main.transform.Rotate(-45, 0, 0);
+                isOverlook = false;
+            } else if (!isOverlook) {
+                Camera.main.transform.Rotate(45, 0, 0);
+                isOverlook = true;
+            }
         }
         if (isOverlook && Input.GetKeyDown("w"))
         {
-            Camera.main.transform.Rotate(-45,0,0);
-            isOverlook = false;
+            Camera.main.transform.Rotate(0,0,90);
         }
 
     }
