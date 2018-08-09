@@ -1,6 +1,4 @@
-﻿using slg.controler;
-using Unity.Entities;
-using Unity.Transforms;
+﻿using Unity.Entities;
 using UnityEngine;
 
 public class KeyInputSystem : ComponentSystem
@@ -12,23 +10,23 @@ public class KeyInputSystem : ComponentSystem
     {
         if (Input.GetKey("down"))
         {
-            Camera.main.transform.Translate(new Vector3(0, -1* speed, 0));
+            Camera.main.transform.Translate(new Vector3(0, 0, -1 * speed), Space.World);
         }
         if (Input.GetKey("up"))
         {
-            Camera.main.transform.Translate(new Vector3(0, 1 * speed, 0));
+            Camera.main.transform.Translate(new Vector3(0, 0, 1 * speed), Space.World);
         }
         if (Input.GetKey("left"))
         {
-            Camera.main.transform.Translate(new Vector3(-1 * speed, 0, 0));
+            Camera.main.transform.Translate(new Vector3(-1 * speed, 0, 0), Space.World);
         }
         if (Input.GetKey("right"))
         {
-            Camera.main.transform.Translate(new Vector3(1 * speed, 0, 0));
+            Camera.main.transform.Translate(new Vector3(1 * speed, 0, 0),Space.World);
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            if (Camera.main.fieldOfView <= 100)
+            if (Camera.main.fieldOfView <= 70)
                 Camera.main.fieldOfView += 2;
             if (Camera.main.orthographicSize <= 20)
                 Camera.main.orthographicSize += 0.5F;
