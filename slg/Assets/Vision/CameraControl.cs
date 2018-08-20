@@ -32,8 +32,12 @@ public class CameraControl : MonoBehaviour {
 		stadiaT = 0.5f;
 		ZoomOutZoomIN();
 
+
 		mCC = mainCamera.GetComponent<Camera>();
 		tCC = tacticsCamera.GetComponent<Camera>();
+
+		cameraPosition = new Vector3(10, 0, 11);
+		cameraRotate = new Vector3(0, 0, 0);
 
 		transform.position = cameraPosition;
 		transform.rotation = Quaternion.Euler(cameraRotate);
