@@ -3,69 +3,87 @@ using UnityEngine;
 
 public class KeyInputSystem : ComponentSystem
 {
-    private EntityManager em = World.Active.GetOrCreateManager<EntityManager>();
-    private float speed = 0.3f;
-    private bool isOverlook = true;
-    protected override void OnUpdate()
+	private EntityManager em = World.Active.GetOrCreateManager<EntityManager>();
+	private float speed = 0.3f;
+	private bool isOverlook = true;
+
+	protected override void OnUpdate()
     {
+		var cameraCtrl = GameObject.Find("CameraController").GetComponent<CameraControl>();
+
+	
         if (Input.GetKey("down"))
         {
-			if(Camera.main.transform.position.z > 1)
+			if(cameraCtrl.cameraPosition.z > 1)
 			{
-				Camera.main.transform.Translate(new Vector3(0, 0, -1 * speed), Space.World);
+				cameraCtrl.cameraPosition += -cameraCtrl.cameraForward * speed;
 			}
         }
         if (Input.GetKey("up"))
         {
-			if (Camera.main.transform.position.z < 20)
+			if (cameraCtrl.cameraPosition.z < 20)
 			{
-				Camera.main.transform.Translate(new Vector3(0, 0, 1 * speed), Space.World);
+				cameraCtrl.cameraPosition += cameraCtrl.cameraForward * speed;
 			}
         }
         if (Input.GetKey("left"))
         {
-			if (Camera.main.transform.position.x > 1)
+			if (cameraCtrl.cameraPosition.x > 1)
 			{
-				Camera.main.transform.Translate(new Vector3(-1 * speed, 0, 0), Space.World);
+				cameraCtrl.cameraPosition += -cameraCtrl.cameraRight * speed;
 			}
         }
         if (Input.GetKey("right"))
         {
-			if (Camera.main.transform.position.x < 23)
+			if (cameraCtrl.cameraPosition.x < 23)
 			{
-				Camera.main.transform.Translate(new Vector3(1 * speed, 0, 0), Space.World);
+				cameraCtrl.cameraPosition += cameraCtrl.cameraRight * speed;
 			}
         }
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            if (Camera.main.fieldOfView <= 70)
-                Camera.main.fieldOfView += 2;
-            if (Camera.main.orthographicSize <= 20)
-                Camera.main.orthographicSize += 0.5F;
-        }
+			if(cameraCtrl.stadiaT < 1)
+			{
+				cameraCtrl.stadiaT += 0.1f;
+			}			
+			else
+			{
+				cameraCtrl.stadiaT = 1;
+			}
+		}
         //Zoom in
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            if (Camera.main.fieldOfView > 2)
-                Camera.main.fieldOfView -= 2;
-            if (Camera.main.orthographicSize >= 1)
-                Camera.main.orthographicSize -= 0.5F;
-        }
+			if (cameraCtrl.stadiaT > 0)
+			{
+				cameraCtrl.stadiaT += -0.1f;
+			}
+			else
+			{
+				cameraCtrl.stadiaT = 0;
+			}
+		}
 
-        if (Input.GetKeyDown("q"))
+		if (Input.GetKeyDown("q"))
+		{
+			if (cameraCtrl.cameraSwitch < 1)
+			{
+				cameraCtrl.cameraSwitch += 1;
+			}
+			else
+			{
+				cameraCtrl.cameraSwitch = 0;
+			}
+		}
+
+        if (Input.GetKeyDown("w"))
         {
-            if (isOverlook) {
-                Camera.main.transform.Rotate(-45, 0, 0);
-                isOverlook = false;
-            } else if (!isOverlook) {
-                Camera.main.transform.Rotate(45, 0, 0);
-                isOverlook = true;
-            }
-        }
-        if (isOverlook && Input.GetKeyDown("w"))
-        {
-            Camera.main.transform.Rotate(0,0,90);
-        }
+			cameraCtrl.cameraRotate += new Vector3(0,90,0);
+			cameraCtrl.cameraForward = Vector3.Cross(Vector3.up, cameraCtrl.cameraForward);
+			cameraCtrl.cameraRight = Vector3.Cross(Vector3.up, cameraCtrl.cameraForward);
+
+		}
+
 
     }
 }
