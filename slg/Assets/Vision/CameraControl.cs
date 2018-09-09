@@ -5,8 +5,8 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour {
 
 	public Transform cameraController;
-	public Transform mainCamera;
-	public Transform tacticsCamera;
+	public GameObject mainCamera;
+	public GameObject tacticsCamera;
 
 	public float minFOV = 5f;
 	public float maxFOV = 70f;
@@ -45,6 +45,7 @@ public class CameraControl : MonoBehaviour {
 		mCC.fieldOfView = CurrentFOV;
 		tCC.orthographicSize = CurrentSize;
 
+		cameraSwitch = 0;
 		SwitchCamera(cameraSwitch);
 	}
 	
@@ -74,19 +75,19 @@ public class CameraControl : MonoBehaviour {
 			switch (currentCamera)
 			{
 				case 0:
-					mCC.enabled = false;
+					mainCamera.SetActive(false);
 					break;
 				case 1:
-					tCC.enabled = false;
+					tacticsCamera.SetActive(false);
 					break;
 			}
 			switch (cameraSwitch)
 			{
 				case 0:
-					mCC.enabled = true;
+					mainCamera.SetActive(true);
 					break;
 				case 1:
-					tCC.enabled = true;
+					tacticsCamera.SetActive(true);
 					break;
 			}
 			currentCamera = cameraSwitch;

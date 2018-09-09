@@ -6,33 +6,36 @@ public class MenueInput : MonoBehaviour {
 
     private void Start() {
     }
-
-    public void AddPreMoveComponent()
+	
+	
+	public void AddPreMoveComponent()
     {
-        var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-        var e = entityManager.CreateEntity(typeof(PreAction));
-        entityManager.SetComponentData(e, new PreAction { actionType = ActionType.ACTION_MOVE });
-    }
+		PreAction(typeof(PreMove));
+	}
 
     public void AddPreAttackComponent()
     {
-        var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-        var e = entityManager.CreateEntity(typeof(PreAction));
-        entityManager.SetComponentData(e, new PreAction { actionType = ActionType.ACTION_ATTACK });
-    }
+		PreAction(typeof(PreAttack));
+	}
 
     public void AddPreSkillComponent()
     {
-        var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-        var e = entityManager.CreateEntity(typeof(PreAction));
-        entityManager.SetComponentData(e, new PreAction { actionType = ActionType.ACTION_SKILL });
-    }
+		PreAction(typeof(PreSkill));
+	}
 
-    public void AddPreOverComponent()
+    public void AddPreFinishComponent()
     {
-        var entityManager = World.Active.GetOrCreateManager<EntityManager>();
-        entityManager.CreateEntity(typeof(RoundOverData));
-    }
+		PreAction(typeof(RoundOverData));
+	}
 
+	private void PreAction(ComponentType type)
+	{
+		Entity gpm = GameProcessManager.GetEntity();
+		var em = GameProcessManager.GetEntityManager();
+		Entity cs = em.GetComponentData<CurrentSelection>(gpm).Value;
+		Debug.Log(em.GetComponentData<PreAction>(cs));
 
+		em.AddComponent(cs, type);
+		Debug.Log(type);
+	}
 }

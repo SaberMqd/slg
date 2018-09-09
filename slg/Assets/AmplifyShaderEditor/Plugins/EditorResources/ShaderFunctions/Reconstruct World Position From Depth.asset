@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b2425a2284af743826c689403a4924, type: 3}
+  m_Name: Reconstruct World Position From Depth
+  m_EditorClassIdentifier: 
+  m_functionInfo: "// Made with Amplify Shader Editor\n// Available at the Unity Asset
+    Store - http://u3d.as/y3X \n/*ASEBEGIN\nVersion=13705\n487;506;979;512;2174.86;437.0381;2.342918;False;False\nNode;AmplifyShaderEditor.MVMatrixNode;3;-2128,128;Float;False;0;1;FLOAT4x4\nNode;AmplifyShaderEditor.PosVertexDataNode;2;-2128,208;Float;False;1;0;5;FLOAT4;FLOAT;FLOAT;FLOAT;FLOAT\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;4;-1888,128;Float;False;2;2;0;FLOAT4x4;0.0;False;1;FLOAT4;0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0;False;1;FLOAT4\nNode;AmplifyShaderEditor.SwizzleNode;18;-1680,128;Float;False;FLOAT3;0;1;2;3;1;0;FLOAT4;0,0,0,0;False;1;FLOAT3\nNode;AmplifyShaderEditor.Vector3Node;17;-1696,224;Float;False;Constant;_SelectiveInverse;Selective
+    Inverse;0;0;-1,-1,1;0;4;FLOAT3;FLOAT;FLOAT;FLOAT\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;6;-1456,128;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT3;-1,-1,1;False;1;FLOAT3\nNode;AmplifyShaderEditor.VertexToFragmentNode;7;-1296,128;Float;False;1;0;FLOAT3;0,0,0;False;1;FLOAT3\nNode;AmplifyShaderEditor.ProjectionParams;9;-1072,208;Float;False;0;5;FLOAT4;FLOAT;FLOAT;FLOAT;FLOAT\nNode;AmplifyShaderEditor.SwizzleNode;19;-1072,352;Float;False;FLOAT;2;1;2;3;1;0;FLOAT3;0,0,0,0;False;1;FLOAT\nNode;AmplifyShaderEditor.SimpleDivideOpNode;10;-848,240;Float;False;2;0;FLOAT;0.0;False;1;FLOAT;0.0;False;1;FLOAT\nNode;AmplifyShaderEditor.ScreenDepthNode;11;-896,48;Float;False;1;1;0;FLOAT4;0,0,0,0;False;1;FLOAT\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;12;-704,128;Float;False;2;2;0;FLOAT3;0,0,0;False;1;FLOAT;0,0,0;False;1;FLOAT3\nNode;AmplifyShaderEditor.FunctionInput;21;-688,48;Float;False;Depth;1;0;False;1;0;FLOAT;0.0;False;1;FLOAT\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;13;-528,80;Float;False;2;2;0;FLOAT;0.0;False;1;FLOAT3;0;False;1;FLOAT3\nNode;AmplifyShaderEditor.RangedFloatNode;20;-528,176;Float;False;Constant;_Const;Const;0;0;1;0;0;0;1;FLOAT\nNode;AmplifyShaderEditor.CameraToWorldMatrix;14;-448,0;Float;False;0;1;FLOAT4x4\nNode;AmplifyShaderEditor.DynamicAppendNode;15;-368,80;Float;False;FLOAT4;4;0;FLOAT3;0,0,0;False;1;FLOAT;1.0;False;2;FLOAT;0.0;False;3;FLOAT;0.0;False;1;FLOAT4\nNode;AmplifyShaderEditor.SimpleMultiplyOpNode;16;-208,0;Float;False;2;2;0;FLOAT4x4;0.0;False;1;FLOAT4;0.0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0;False;1;FLOAT4\nNode;AmplifyShaderEditor.FunctionOutput;0;0,0;Float;False;True;XYZW;0;1;0;FLOAT4;0,0,0,0;False;0\nWireConnection;4;0;3;0\nWireConnection;4;1;2;0\nWireConnection;18;0;4;0\nWireConnection;6;0;18;0\nWireConnection;6;1;17;0\nWireConnection;7;0;6;0\nWireConnection;19;0;7;0\nWireConnection;10;0;9;3\nWireConnection;10;1;19;0\nWireConnection;12;0;7;0\nWireConnection;12;1;10;0\nWireConnection;21;0;11;0\nWireConnection;13;0;21;0\nWireConnection;13;1;12;0\nWireConnection;15;0;13;0\nWireConnection;15;3;20;0\nWireConnection;16;0;14;0\nWireConnection;16;1;15;0\nWireConnection;0;0;16;0\nASEEND*/\n//CHKSM=5737F9E33193F80A5B9232BC409326AE5CABEDCC"
+  m_functionName: 
+  m_description: Reconstructs world position from the depth of the scene. If depth
+    is unconnected a default screen depth will be calculated. For best results, zwrite
+    should be OFF and ztest should be ALWAYS.
+  m_additionalIncludes:
+    m_additionalIncludes: []
+    m_outsideIncludes: []
+  m_nodeCategory: 9
+  m_customNodeCategory: 

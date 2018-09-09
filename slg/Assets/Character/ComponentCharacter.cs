@@ -18,6 +18,7 @@ public struct BaseCharacterAttribute : IComponentData
     public int Lucky;
     public int Defense;
     public int MagicResistance;
+	public int Mobility;
 }
 
 public struct CombatAttributes : IComponentData

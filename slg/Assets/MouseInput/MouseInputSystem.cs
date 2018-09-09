@@ -6,44 +6,23 @@ using UnityEngine;
 public class MouseInputSystem : ComponentSystem
 {
 
-    private EntityManager em = World.Active.GetOrCreateManager<EntityManager>();
 
-    protected override void OnUpdate()
-    {
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log(hit.collider.gameObject.name);
-                if (hit.collider.gameObject.name == "Character_1001")
-                {
-                    var e = hit.collider.gameObject.GetComponent<GameObjectEntity>();
-                    if (!em.HasComponent(e.Entity, typeof(PreAction))) {
-                        em.AddComponent(e.Entity, typeof(PreAction));
-                        em.SetComponentData(e.Entity, new PreAction { actionType = ActionType.ACTION_SELECT });
-                    }
-                }
-                else if (hit.collider.gameObject.name == "MoveCell")
-                {
-                    var e = hit.collider.gameObject.GetComponent<GameObjectEntity>();
-                    var pos = em.GetComponentData<Position>(e.Entity);
-                    em.CreateEntity(typeof(Position), typeof(PreAction));
-                    em.SetComponentData(e.Entity, new Position { Value = pos.Value });
-                    em.SetComponentData(e.Entity, new PreAction { actionType = ActionType.ACTION_MOVE_TO });
-                }
-                else if(hit.collider.gameObject.name == "mapcell")
-                {
-                }
-            }
-        }
+	protected override void OnUpdate()
+	{
+		if (Input.GetMouseButtonDown(0))
+		{
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit))
+			{
+				Entity e = hit.collider.gameObject.GetComponent<GameObjectEntity>().Entity;
+				Entity gpm = GameProcessManager.GetEntity();
+				EntityManager.AddComponentData<MouseClick>(e, new MouseClick() { Value = 0 });
+				EntityManager.SetComponentData<CurrentSelection>(gpm, new CurrentSelection() { Value = e });
+				Debug.Log("Click:" + e.GetHashCode());
 
-        //右键撤销。
-        if (Input.GetMouseButtonDown(1))
-        {
-        }
-        
-    }
+
+			}
+		}
+	}
 }
