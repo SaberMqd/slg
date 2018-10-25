@@ -11,7 +11,6 @@ namespace slg.move {
 
     public class CreateMoveRangeSystem : ComponentSystem
     {
-
         struct g_Mover
         {
             public int Length;
@@ -30,12 +29,6 @@ namespace slg.move {
 
 		[Inject] g_Blocker blocker;
 
-		//struct g_Ground
-		//{
-		//	public int Length;
-		//	public EntityArray entity;
-		//	public ComponentDataArray<Ground> blocker;
-		//}
 		protected override void OnUpdate()
         {
             if (mover.Length == 0) {
@@ -51,21 +44,32 @@ namespace slg.move {
             PostUpdateCommands.RemoveComponent<PreMove>(mover.entity[0]);
         }
 
-		private List<float3> CreateMoveRange(float3 position, int ActionPoint)
-		{
-			MapDataManager mdm = MapDataManager.GetInstance();
-			List<float3> moveRange = new List<float3>();
-			List<float3> testRange = new List<float3>();
-			List<float3> lastRange = new List<float3> { position };
-			List<float> surplusAP = new List<float> { ActionPoint };
-			List<float> testAP = new List<float>();
-			Entity testGround = new Entity();
-			int mobility = EntityManager.GetComponentData<BaseCharacterAttribute>(mover.entity[0]).Mobility;
-			while (ActionPoint > 0)
+        private List<float3> CreateMoveRange(float3 position, int ActionPoint)
+        {
+            MapDataManager mdm = MapDataManager.GetInstance();
+            List<float3> moveRange = new List<float3>();
+            List<float3> testRange = new List<float3>();
+            List<float3> lastRange = new List<float3> { position };
+            List<float> surplusAP = new List<float> { ActionPoint };
+            List<float> testAP = new List<float>();
+            Entity testGround = new Entity();
+			int mobility = 0;
+            if (EntityManager.HasComponent<BaseCharacterAttribute>(mover.entity[0])) {
+                var baseAttribute = EntityManager.GetComponentData<BaseCharacterAttribute>(mover.entity[0]);
+                mobility = baseAttribute.Mobility;
+            }
+
+            while (ActionPoint > 0)
 			{
 				for (int i = 0; i < lastRange.Count; i++)
 				{
-					List<float3> tempRange = new List<float3> { lastRange[i] + new float3(-1, 0, 0), lastRange[i] + new float3(1, 0, 0), lastRange[i] + new float3(0, 0, -1), lastRange[i] + new float3(0, 0, 1) };
+					List<float3> tempRange = new List<float3> {
+                        lastRange[i] + new float3(-1, 0, 0),
+                        lastRange[i] + new float3(1, 0, 0),
+                        lastRange[i] + new float3(0, 0, -1),
+                        lastRange[i] + new float3(0, 0, 1)
+                    };
+
 					foreach (var item in tempRange)
 					{
 						testGround = mdm.FindGroundCell(item);
@@ -110,7 +114,6 @@ namespace slg.move {
 
 		private void MoveRangeDisplay(List<float3> moveRange)
 		{
-			
 			foreach (var i in moveRange)
 			{
 				Debug.Log(i.x +" " + i.y + " " + i.z);

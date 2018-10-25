@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class MapDataManager
 {
-
 	static private MapDataManager instance = null;
 
 	public struct CellInfo
@@ -58,11 +55,12 @@ public class MapDataManager
 
 	}
 
-	public Entity[,,] Entities;
-
+	//public Entity[,,] Entities = new Entity();
 
 	public Entity FindGroundCell(Vector3 position)
 	{
-		return Entities[(int)position.x, (int)position.y, (int)position.z];
+        //return new Vector3(0,1);
+        //return Entities[(int)position.x, (int)position.y, (int)position.z];
+        return new Entity();
 	}
 }

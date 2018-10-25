@@ -30,6 +30,7 @@ namespace slg.move
 
 		private List<Vector3> MovePathNav(Vector3 position, int ActionPoint)
 		{
+            /*
 			MapDataManager mdm = MapDataManager.GetInstance();
 			List<Vector3> moveRange = new List<Vector3>();
 			List<Vector3> tempRange = new List<Vector3>();
@@ -47,7 +48,9 @@ namespace slg.move
 			}
 
 			Debug.Log(moveRange.Count);
-			return moveRange;
+			return moveRange；
+            */
+            return new List<Vector3>();
 		}
 	}
 }

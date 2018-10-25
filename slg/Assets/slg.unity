@@ -186,7 +186,6 @@ GameObject:
   - component: {fileID: 270856304}
   - component: {fileID: 270856303}
   - component: {fileID: 270856302}
-  - component: {fileID: 270856301}
   - component: {fileID: 270856300}
   - component: {fileID: 270856309}
   - component: {fileID: 270856310}
@@ -211,23 +210,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedData:
     campType: 0
---- !u!114 &270856301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114563882830190324, guid: 66a9cb07145adae4f89abeede4775658,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 270856299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3299bcf16ac9a4eab402c7546cf865, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedData:
-    Attack: 0
-    HitRate: 0
-    Cri: 0
-    Dodge: 0
 --- !u!114 &270856302
 MonoBehaviour:
   m_ObjectHideFlags: 0
