@@ -1,110 +1,60 @@
-﻿//using slg.move;
-//using Unity.Collections;
-//using Unity.Entities;
-//using Unity.Transforms;
+﻿using slg.move;
+using Unity.Entities;
+using Unity.Transforms;
 
-//namespace slg.controler
-//{
+namespace slg.controler
+{
 
-//    public class PreActionSystem : ComponentSystem
-//    {
-//        struct Group
-//        {
-//            public int Length;
-//            public EntityArray entity;
-//            public ComponentDataArray<PreAction> data;
-//        }
+    public class PreActionSystem : ComponentSystem
+    {
+        struct Group
+        {
+            public int Length;
+            public EntityArray entity;
+            public ComponentDataArray<PreAction> data;
+        }
 
-//        //[ReadOnly]
-//        static private Entity currentEntity;
+        private ActionType actionType = ActionType.ACTION_NONE;
 
-//        private ActionType actionType = ActionType.ACTION_NONE;
+        [Inject] Group group;
 
-//        [Inject] Group group;
-
-//        protected override void OnUpdate()
-//        {
-//            if (group.Length == 0) {
-//                return;
-//            }
-
-//            switch (group.data[0].actionType) {
-//                case ActionType.ACTION_ATTACK:
-//                    if (actionType == ActionType.ACTION_SELECT)
-//                    {
-//                        actionType = ActionType.ACTION_ATTACK;
-//                        EntityManager.AddComponent(currentEntity, typeof(PreAttack));
-//                        PostUpdateCommands.DestroyEntity(group.entity[0]);
-
-//                    }
-//                    else
-//                    {
-//                        UnityEngine.Debug.Log("reset");
-
-//                    }
-//                    break;
-//                case ActionType.ACTION_MOVE:
-
-//                    if (actionType == ActionType.ACTION_SELECT)
-//                    {
-//                        actionType = ActionType.ACTION_MOVE;
-//                        if (EntityManager.Exists(currentEntity)) {
-//                            PostUpdateCommands.AddComponent(currentEntity, new PreMove{ });
-//                        }
-//                        PostUpdateCommands.DestroyEntity(group.entity[0]);
-//                    }
-//                    else
-//                    {
-//                        UnityEngine.Debug.Log("reset");
+        protected override void OnUpdate()
+        {
+            if (group.data[0].actionType == ActionType.ACTION_ATTACK && actionType == ActionType.ACTION_SELECT) {
+                actionType = ActionType.ACTION_ATTACK;
+                EntityManager.AddComponent(GameProcessManager.current_entity, typeof(PreAttack));
+                PostUpdateCommands.DestroyEntity(group.entity[0]);
+            } else if (group.data[0].actionType == ActionType.ACTION_MOVE && actionType == ActionType.ACTION_SELECT) {
+                actionType = ActionType.ACTION_MOVE;
+                if (EntityManager.Exists(GameProcessManager.current_entity))
+                {
+                    PostUpdateCommands.AddComponent(GameProcessManager.current_entity, new PreMove{ });
+                }
+                PostUpdateCommands.DestroyEntity(group.entity[0]);
+            }
+            else if (group.data[0].actionType == ActionType.ACTION_SELECT && actionType == ActionType.ACTION_NONE)
+            {
+                actionType = ActionType.ACTION_SELECT;
+                GameProcessManager.current_entity = group.entity[0];
+                PostUpdateCommands.RemoveComponent<PreAction>(group.entity[0]);
+            }
+            else if (group.data[0].actionType == ActionType.ACTION_SKILL && actionType == ActionType.ACTION_SELECT)
+            {
+                actionType = ActionType.ACTION_SKILL;
+                EntityManager.AddComponent(GameProcessManager.current_entity, typeof(PreSkill));
+                PostUpdateCommands.DestroyEntity(group.entity[0]);
+            }
+            else if (group.data[0].actionType == ActionType.ACTION_MOVE_TO && actionType == ActionType.ACTION_SELECT)
+            {
+                var pos = EntityManager.GetComponentData<Position>(group.entity[0]);
+                EntityManager.AddComponentData(GameProcessManager.current_entity, new MoveTo { position = pos });
+                actionType = ActionType.ACTION_NONE;
+            }
+            else {
+                GameProcessManager.current_entity = new Entity();
+            }
+        }
 
 
-//                    }
-//                    break;
-//                case ActionType.ACTION_SELECT:
-//                    if (actionType == ActionType.ACTION_NONE)
-//                    {
-//                        currentEntity = group.entity[0];
-//                        actionType = ActionType.ACTION_SELECT;
-//                        PostUpdateCommands.RemoveComponent<PreAction>(group.entity[0]);
-//                    }
-//                    else {
-//                        //执行撤销操作
-//                        UnityEngine.Debug.Log("reset");
-//                        PostUpdateCommands.RemoveComponent<PreAction>(group.entity[0]);
-//                    }
-//                    break;
-//                case ActionType.ACTION_SKILL:
-//                    if (actionType == ActionType.ACTION_SELECT)
-//                    {
-//                        actionType = ActionType.ACTION_SKILL;
-//                        EntityManager.AddComponent(currentEntity, typeof(PreSkill));
-//                        PostUpdateCommands.DestroyEntity(group.entity[0]);
-//                    }
-//                    else
-//                    {
-//                        UnityEngine.Debug.Log("reset");
-//                    }
-//                    break;
-//                case ActionType.ACTION_MOVE_TO:
-//                    if (actionType == ActionType.ACTION_MOVE)
-//                    {
-//                        var pos = EntityManager.GetComponentData<Position>(group.entity[0]);
-//                        EntityManager.AddComponentData(currentEntity, new MoveTo { position = pos });
-//                        actionType = ActionType.ACTION_NONE;
-//                        PostUpdateCommands.DestroyEntity(group.entity[0]);
-//                    }
-//                    else
-//                    {
-//                        UnityEngine.Debug.Log("reset");
-//                    }
-
-//                    break;
-//            }
-
-           
-
-//        }
-
-
-//    }
-//}
+    }
+}

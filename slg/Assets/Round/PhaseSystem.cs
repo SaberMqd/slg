@@ -12,16 +12,14 @@ public class PhaseSystem : ComponentSystem
 
 	[Inject] Message m;
 
-	Entity gpm = GameProcessManager.GetEntity();
-	EntityManager em = GameProcessManager.GetEntityManager();
-
 	protected override void OnUpdate()
 	{
-		if (EntityManager.GetSharedComponentData<CampArray>(gpm).Value.Length > 0)
+        Entity gpm = GameProcessManager.current_entity;
+        if (EntityManager.GetSharedComponentData<CampArray>(gpm).Value.Length > 0)
 		{
 			Entity e = m.entity[0];
-			CurrentPhase currentPhase = em.GetComponentData<CurrentPhase>(gpm);
-			CampArray camplist = em.GetSharedComponentData<CampArray>(gpm);
+			CurrentPhase currentPhase = EntityManager.GetComponentData<CurrentPhase>(gpm);
+			CampArray camplist = EntityManager.GetSharedComponentData<CampArray>(gpm);
 			int index = 0;
 			for (index = 0; index < camplist.Value.Length; index++)
 			{

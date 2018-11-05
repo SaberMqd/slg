@@ -1,12 +1,9 @@
 ﻿using slg.controler;
 using Unity.Entities;
-using Unity.Transforms;
 using UnityEngine;
 
 public class MouseInputSystem : ComponentSystem
 {
-
-
 	protected override void OnUpdate()
 	{
 		if (Input.GetMouseButtonDown(0))
@@ -15,13 +12,8 @@ public class MouseInputSystem : ComponentSystem
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit))
 			{
-				Entity e = hit.collider.gameObject.GetComponent<GameObjectEntity>().Entity;
-				Entity gpm = GameProcessManager.GetEntity();
-				EntityManager.AddComponentData<MouseClick>(e, new MouseClick() { Value = 0 });
-				EntityManager.SetComponentData<CurrentSelection>(gpm, new CurrentSelection() { Value = e });
-				Debug.Log("Click:" + e.GetHashCode());
-
-
+				var e = hit.collider.gameObject.GetComponent<GameObjectEntity>().Entity;
+                EntityManager.AddComponentData(e, new PreAction { actionType = ActionType.ACTION_SELECT});
 			}
 		}
 	}

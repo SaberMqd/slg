@@ -14,14 +14,12 @@ public class CampListSystem : ComponentSystem
 	}
 	[Inject] Message message;
 
-	Entity gpm = GameProcessManager.GetEntity();
-	EntityManager em = GameProcessManager.GetEntityManager();
-
 	protected override void OnUpdate()
 	{
 		if (message.Length > 0)
 		{
-			CampArray campArray = em.GetSharedComponentData<CampArray>(gpm);
+            Entity gpm = GameProcessManager.current_entity;
+            CampArray campArray = EntityManager.GetSharedComponentData<CampArray>(gpm);
 			List<Camp> newList = ConvertDataType.NativeArrayToList(campArray.Value);
 
 			for (int i = 0; i < message.Length; i++)

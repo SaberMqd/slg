@@ -2,7 +2,6 @@
 
 namespace slg.controler
 {
-
     public enum ActionType {
         ACTION_NONE = 0,
         ACTION_SELECT,

@@ -1,12 +1,10 @@
 ﻿using slg.controler;
 using Unity.Entities;
 using UnityEngine;
-
 public class MenueInput : MonoBehaviour {
 
     private void Start() {
     }
-	
 	
 	public void AddPreMoveComponent()
     {
@@ -30,12 +28,8 @@ public class MenueInput : MonoBehaviour {
 
 	private void PreAction(ComponentType type)
 	{
-		Entity gpm = GameProcessManager.GetEntity();
-		var em = GameProcessManager.GetEntityManager();
-		Entity cs = em.GetComponentData<CurrentSelection>(gpm).Value;
-		Debug.Log(em.GetComponentData<PreAction>(cs));
-
-		em.AddComponent(cs, type);
+        var em = World.Active.GetOrCreateManager<EntityManager>();
+        em.AddComponent(GameProcessManager.current_entity, type);
 		Debug.Log(type);
 	}
 }

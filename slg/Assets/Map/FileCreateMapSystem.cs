@@ -39,15 +39,14 @@ namespace slg.map
 				Dictionary<int, Cell> cellMap = new Dictionary<int, Cell>();
 				foreach (var cell in cells.Items)
 				{
-					cellMap.Add(cell.ID, cell);
-				}
+                    MapDataManager.GetInstance().cellInfo.Add(cell.ID, cell);
+                }
 
 				var terrains = XML.Paraser.XmlParaser<ItemCollection<XML.Data.Terrain>>.Paraser(Application.dataPath + "/Config/DemoMap.xml");
 
 				foreach (var terr in terrains.Items)
 				{
 					MapDataManager.GetInstance().map[terr.X][terr.Y] = terr.CellID;
-					var cellinfo = cellMap[terr.CellID];
 					string resource_path = "Terrain_" + terr.CellID;
 					var prefab = Resources.Load<GameObject>(resource_path);
 					GameObject terr_go = GameObject.Instantiate(prefab);
