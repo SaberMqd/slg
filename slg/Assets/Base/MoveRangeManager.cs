@@ -29,31 +29,35 @@ public class MoveRangeManager {
         range_cells.Clear();
     }
 
-    struct Pos
+    public struct Pos
     {
         public int x;
         public int y;
         public int lastMovement;
     };
 
-    struct RealPos {
+    public struct RealPos {
         public int x;
         public int y;
     };
 
-    struct Node : BacktrackingAlg.Node
+    public struct Node : BacktrackingAlg.Node
     {
         public float Cost()
         {
             var info_id = MapDataManager.GetInstance().map[x][y];
-            return MapDataManager.GetInstance().cellInfo[info_id].PassEfficiency;
+            var passCost = MapDataManager.GetInstance().cellInfo[info_id].PassEfficiency;
+            if (passCost <= 0) {
+                return 99;
+            }
+            return passCost;
         }
 
         public BacktrackingAlg.Node[] GetAllAdjacentNodes()
         {
             Node[] nodes = new Node[4];
             int count = 0;
-            if (x + 1 <= MapDataManager.GetInstance().width) {
+            if (x + 1 <= MapDataManager.GetInstance().width-1) {
                 nodes[count] = new Node { x = x + 1, y = y };
                 count++;
             }
@@ -61,7 +65,7 @@ public class MoveRangeManager {
                 nodes[count] = new Node { x = x - 1, y = y };
                 count++;
             }
-            if (y + 1 <= MapDataManager.GetInstance().height)
+            if (y + 1 <= MapDataManager.GetInstance().height-1)
             {
                 nodes[count] = new Node { x = x, y = y + 1 };
                 count++;
@@ -70,6 +74,9 @@ public class MoveRangeManager {
             {
                 nodes[count] = new Node {  x = x,y = y - 1 };
                 count++;
+            }
+            if (0 == count) {
+                return null;
             }
             BacktrackingAlg.Node[] ret = new BacktrackingAlg.Node[count];
             for (int i = 0; i < count; ++i) {
@@ -89,10 +96,16 @@ public class MoveRangeManager {
 
     public void CreateMoveRange(int x, int y, int z, int passValue) {
         var area = BacktrackingAlg.GetAccessibleArea(new Node { x = x, y = y}, passValue);
+        UnityEngine.Debug.Log("areas num is " + area.Count);
         foreach (var c in area) {
-            var go = GameObject.Instantiate(Resources.Load<GameObject>("MoveCell"));
             var t = c.Key.Split('_');
-            go.transform.position = new Vector3 { x = int.Parse(t[0]), y = int.Parse(t[1]), z = 0.5f};
+            var prefab = Resources.Load<GameObject>("MoveCell");
+            GameObject terr_go = GameObject.Instantiate(prefab);
+            var e = terr_go.GetComponent<GameObjectEntity>();
+            GameProcessManager.entity_manager.SetComponentData(e.Entity, new Position
+            {
+                Value = new float3(int.Parse(t[0]), 0, z = int.Parse(t[1]))
+            });
         }
         return;
     }

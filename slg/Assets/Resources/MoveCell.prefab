@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4923202121722486}
   - component: {fileID: 65374941262229498}
   - component: {fileID: 114643296967652952}
-  - component: {fileID: 114392501208913312}
   - component: {fileID: 114149551558290736}
   - component: {fileID: 114426714663404984}
+  - component: {fileID: 114392501208913312}
   m_Layer: 0
   m_Name: MoveCell
   m_TagString: Untagged

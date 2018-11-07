@@ -6,6 +6,5 @@ public class TestSystem : ComponentSystem
 {
 	protected override void OnUpdate()
 	{
-		Debug.Log("test");
 	}
 }

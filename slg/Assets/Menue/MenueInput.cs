@@ -30,6 +30,6 @@ public class MenueInput : MonoBehaviour {
 	{
         var em = World.Active.GetOrCreateManager<EntityManager>();
         em.AddComponent(GameProcessManager.current_entity, type);
-		Debug.Log(type);
+		Debug.Log("PreAction is" + type);
 	}
 }

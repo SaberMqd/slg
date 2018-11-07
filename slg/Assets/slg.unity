@@ -169,6 +169,7 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114251865900725804, guid: 84aba36f5d63a334e9269b6ac1a39a4d, type: 2}
+    - {fileID: 114999431352483320, guid: 84aba36f5d63a334e9269b6ac1a39a4d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 84aba36f5d63a334e9269b6ac1a39a4d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &270856299
@@ -185,10 +186,10 @@ GameObject:
   - component: {fileID: 270856305}
   - component: {fileID: 270856304}
   - component: {fileID: 270856303}
-  - component: {fileID: 270856302}
   - component: {fileID: 270856300}
   - component: {fileID: 270856309}
   - component: {fileID: 270856310}
+  - component: {fileID: 270856301}
   m_Layer: 0
   m_Name: Character_40000
   m_TagString: Untagged
@@ -210,11 +211,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SerializedData:
     campType: 0
---- !u!114 &270856302
+--- !u!114 &270856301
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114423384966665380, guid: 66a9cb07145adae4f89abeede4775658,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 270856299}
   m_Enabled: 1
@@ -223,22 +223,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedData:
-    MinHP: 19
-    MaxHP: 19
-    MinStr: 8
-    MaxStr: 8
-    MinMag: 0
-    MaxMag: 0
-    MinSki: 15
-    MaxSki: 15
-    MinSpd: 3
-    MaxSpd: 3
-    MinLuc: 3
-    MaxLuc: 3
-    MinDef: 8
-    MaxDef: 8
-    MinMdef: 1
-    MaxMdef: 1
+    Lv: 1
+    XP: 0
+    Movement: 3
+    HP: 1
+    Power: 1
+    MP: 1
+    Skill: 1
+    Speed: 1
+    Lucky: 1
+    Defense: 1
+    MagicResistance: 1
 --- !u!65 &270856303
 BoxCollider:
   m_ObjectHideFlags: 0

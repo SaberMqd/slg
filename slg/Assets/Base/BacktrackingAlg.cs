@@ -13,30 +13,36 @@ public class BacktrackingAlg
     {
         public float value;
         public Node node;
-        public Node from_node;
     }
     static public Dictionary<string, Node> GetAccessibleArea(Node begNode, float value)
     {
         Dictionary<string, Node> ret = new Dictionary<string, Node>();
         Stack<StackNode> tmpFindStack = new Stack<StackNode>();
-        tmpFindStack.Push(new StackNode{value = value,node = begNode, from_node = begNode });
+        tmpFindStack.Push(new StackNode{value = value,node = begNode});
 
+        int i = 0;
         while (tmpFindStack.Count != 0) {
             var node = tmpFindStack.Pop();
             if (node.value < 0)
             {
                 continue;
             }
-            ret.Add(node.node.ID(), node.node); 
+            //UnityEngine.Debug.Log(node.node.ID()+"  value is " + node.value);
+            if (!ret.ContainsKey(node.node.ID())) {
+                ret.Add(node.node.ID(), node.node);
+            }
+            if (node.node.GetAllAdjacentNodes() == null) {
+                continue;  
+            }
             foreach (var no in node.node.GetAllAdjacentNodes()) {
-                if (no.ID() == node.from_node.ID()) {
-                    continue; 
-                }
-                if (node.value - no.Cost() >= 0) {
-                    tmpFindStack.Push(new StackNode { value = node.value - no.Cost(), node = no});
-                }
+                tmpFindStack.Push(new StackNode { value = node.value - no.Cost(), node = no});
+            }
+            i++;
+            if (i == 20) {
+                break;
             }
         }
+
         return ret;
     }
 }

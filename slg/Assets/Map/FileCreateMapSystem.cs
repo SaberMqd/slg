@@ -46,7 +46,7 @@ namespace slg.map
 
 				foreach (var terr in terrains.Items)
 				{
-					MapDataManager.GetInstance().map[terr.X][terr.Y] = terr.CellID;
+					MapDataManager.GetInstance().map[terr.X-1][terr.Y-1] = terr.CellID;
 					string resource_path = "Terrain_" + terr.CellID;
 					var prefab = Resources.Load<GameObject>(resource_path);
 					GameObject terr_go = GameObject.Instantiate(prefab);
@@ -56,10 +56,11 @@ namespace slg.map
 						Value = new float3(terr.X, 0, terr.Y)
 					});
 				}
+                MapDataManager.GetInstance().width = 23;
+                MapDataManager.GetInstance().height = 20;
+                MapDataManager.GetInstance().isCreated = true;
 
-				MapDataManager.GetInstance().isCreated = true;
-
-				EntityManager.RemoveComponent<FileCreateMap>(sourceEntity);
+                EntityManager.RemoveComponent<FileCreateMap>(sourceEntity);
 				UpdateInjectedComponentGroups();
 			}
         }

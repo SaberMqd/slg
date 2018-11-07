@@ -20,6 +20,10 @@ public class MapDataManager
 		if (instance == null)
 		{
 			instance = new MapDataManager();
+            instance.map = new int[50][];
+            for (int i = 0; i < 50; ++i) {
+                instance.map[i] = new int[50];
+            }
 		}
 		return instance;
 	}
